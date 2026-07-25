@@ -1,0 +1,12 @@
+{
+  "projectId": "",
+  "projectName": "Jason Shadow Website",
+  "sites": [{
+    "$id": "jason-shadow",
+    "name": "Jason Shadow",
+    "framework": "vite",
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "installCommand": "npm ci"
+  }]
+}

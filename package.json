@@ -1,9 +1,12 @@
 {
   "name": "musicwebsite",
   "version": "1.0.0",
-  "description": "Static website for Jason Shadow with Playwright browser screenshot checks.",
+  "description": "Responsive component-based Jason Shadow website with an Appwrite-ready Vite build.",
   "main": "script.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/copy-static.js",
+    "preview": "vite preview --host 127.0.0.1",
     "test": "npm run test:browser",
     "test:browser": "playwright test",
     "test:browser:headed": "playwright test --headed",
@@ -15,7 +18,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.61.1",
+    "vite": "^7.0.5"
   },
   "dependencies": {
     "appwrite": "^26.2.0"
