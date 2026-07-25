@@ -2,7 +2,7 @@ import '../assets/css/base.css';
 import '../assets/css/home.css';
 import { header, footer } from './components.js';
 import { services, portfolio, fallbackNews } from './data.js';
-import { loadNews } from '../lib/appwrite.js';
+import { client, loadNews } from '../lib/appwrite.js';
 
 const cards = portfolio.map(([title, text, file], index) => `<article class="portfolio-preview-card${index === 0 ? ' is-active' : ''}" data-portfolio-card data-title-key="portfolioItem${index + 1}Title" data-text-key="portfolioItem${index + 1}Text"><div class="portfolio-media"><video class="portfolio-video" controls preload="metadata" aria-label="${title}"><source src="/uploads/portfolio/${file}.mp4" type="video/mp4"></video><picture><img src="/uploads/portfolio/${file}.png" alt="${title}" loading="lazy" onerror="this.hidden=true"></picture><span class="media-fallback">Upload: uploads/portfolio/${file}.png or ${file}.mp4</span></div><h3 data-i18n="portfolioItem${index + 1}Title">${title}</h3></article>`).join('');
 const renderNews = items => items.map(([dateTime, date, title, text]) => `<article class="news-card"><time datetime="${dateTime}">${date}</time><h3>${title}</h3><p>${text}</p></article>`).join('');
@@ -16,4 +16,7 @@ document.querySelector('#app').innerHTML = `<div class="ember-field" aria-hidden
 <section id="booking" class="section booking-section" data-animate="rise"><div class="section-heading"><p class="eyebrow">Contact &amp; Booking</p><h2>Request a project</h2><p>Briefly describe your project, choose your budget and Jason will get back to you for the next steps.</p></div><form class="booking-form" action="https://formsubmit.co/business@jason-shadow.com" method="post"><input type="hidden" name="_subject" value="Neue Booking-Anfrage über jason-shadow.com"><label><span>Name</span><input name="Name" autocomplete="name" required></label><label><span>Email</span><input name="E-Mail" type="email" autocomplete="email" required></label><label><span>Project type</span><select name="Projektart" required><option value="">Please select</option><option>Singing / Feature</option><option>Speaker / Hosting</option><option>Speech / Keynote</option><option>Live performance / Event</option><option>Other</option></select></label><label><span>Budget: <output id="budget-output" for="budget">500 €</output></span><input id="budget" name="Budget" type="range" min="150" max="1000" step="50" value="500"></label><label class="full-span"><span>Message</span><textarea name="Nachricht" rows="6" required></textarea></label><button class="primary-action full-span" type="submit">Send request</button></form></section></main>${footer()}`;
 
 import('../script.js');
+client.ping().catch(() => {
+  console.warn('Appwrite backend ping failed.');
+});
 loadNews().then(items => { const status = document.querySelector('[data-news-status]'); if (items?.length) { document.querySelector('[data-news-grid]').innerHTML = renderNews(items); status.textContent = `${items.length} news items loaded.`; } else status.textContent = 'Current highlights'; }).catch(() => { document.querySelector('[data-news-status]').textContent = 'Live updates are temporarily unavailable. Showing saved highlights.'; });
