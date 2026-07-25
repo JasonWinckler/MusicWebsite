@@ -12,14 +12,14 @@ npm run dev
 
 Open the URL printed by Vite. Public content remains available at `/`, `/affiliates/`, `/impressum/`, and `/datenschutz/`.
 
-## Environment variables
+## Appwrite configuration
 
-All variables are optional, so saved news remains visible if Appwrite is unavailable. Variables prefixed with `VITE_` are public and embedded in the browser bundle:
+The browser client is connected to the **Jason Shadow Enterprises** project (`6a64cbeb0009826c9efc`) at `https://fra.cloud.appwrite.io/v1`. These public connection details are fixed in `lib/appwrite.js`.
+
+The optional news identifiers remain configurable. Saved news remains visible if either value is omitted or Appwrite is unavailable. Variables prefixed with `VITE_` are public and embedded in the browser bundle:
 
 | Variable | Purpose |
 | --- | --- |
-| `VITE_APPWRITE_ENDPOINT` | Appwrite API endpoint, e.g. `https://fra.cloud.appwrite.io/v1` |
-| `VITE_APPWRITE_PROJECT_ID` | Public Appwrite project ID |
 | `VITE_APPWRITE_DATABASE_ID` | Database containing news |
 | `VITE_APPWRITE_NEWS_COLLECTION_ID` | News collection; documents use `date`, `dateLabel`, `title`, and `text` |
 
@@ -42,6 +42,7 @@ Create/import the Site using `appwrite.json` or enter these values in Appwrite C
 - **Install command:** `npm ci`
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
-- Add the required `VITE_APPWRITE_*` build variables from `.env.example`.
+- Add the optional news database and collection build variables from `.env.example` when live news should be loaded.
+- The browser automatically calls `client.ping()` on startup to verify that the Appwrite backend is reachable.
 
 The generated `dist/_redirects` sends each public route to its matching HTML entry and provides `/index.html` as the final client-side fallback. This keeps direct links and browser refreshes working. Existing files take precedence over the fallback. After deployment, verify all four routes and check the browser console/network panel for errors.
