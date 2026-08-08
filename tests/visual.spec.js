@@ -24,6 +24,15 @@ test('navigation, language, portfolio and budget interactions work', async ({ pa
   await expect(page.locator('[data-news-status]')).not.toHaveText(/Loading/);
 });
 
+test('affiliate tiles use the restored partner images', async ({ page }) => {
+  await page.goto('/affiliates/');
+  const images = page.locator('.affiliate-tile__image img');
+  await expect(images).toHaveCount(2);
+  await expect(images.nth(0)).toHaveAttribute('src', /\/assets\/corissia-.*\.webp/);
+  await expect(images.nth(1)).toHaveAttribute('src', /\/assets\/waterdrop-.*\.webp/);
+  await expect.poll(() => images.evaluateAll(items => items.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+});
+
 test('mobile navigation is keyboard accessible', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'mobile-only behavior'); await page.goto('/');
   await page.getByRole('button', { name: /open menu/i }).focus(); await page.keyboard.press('Enter');
