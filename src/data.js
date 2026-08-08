@@ -1,3 +1,6 @@
+import corissiaImage from '../affiliates/uploads/corissia.webp';
+import waterdropImage from '../affiliates/uploads/waterdrop.webp';
+
 export const navigation = [
   ['about', 'About Me'], ['services', 'Services'], ['portfolio', 'Portfolio'], ['news', 'News'], ['booking', 'Booking'],
 ];
@@ -21,6 +24,6 @@ export const fallbackNews = [
 ];
 
 export const affiliates = [
-  { title: 'Corissia Hotels on Crete', text: 'Plan an unforgettable Crete escape with beautiful stays, warm hospitality and resort experiences worth exploring.', href: 'https://corissia.com/hotels/en/', image: '/uploads/banner.jfif', alt: 'Corissia Resorts on Crete' },
-  { title: 'Waterdrop®', text: 'Staying hydrated is important for your health and voice - Waterdrop® makes it easy. Enjoy drinking!', href: 'https://www.waterdrop.de/collections/all?ll_ref_id=jDkbNYnSg', image: '/uploads/profile.png', alt: 'Waterdrop hydration products' },
+  { title: 'Corissia Hotels on Crete', text: 'Plan an unforgettable Crete escape with beautiful stays, warm hospitality and resort experiences worth exploring.', href: 'https://corissia.com/hotels/en/', image: corissiaImage, alt: 'Corissia Resorts on Crete' },
+  { title: 'Waterdrop®', text: 'Staying hydrated is important for your health and voice - Waterdrop® makes it easy. Enjoy drinking!', href: 'https://www.waterdrop.de/collections/all?ll_ref_id=jDkbNYnSg', image: waterdropImage, alt: 'Waterdrop hydration products' },
 ];
