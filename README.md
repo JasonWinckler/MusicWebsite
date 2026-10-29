@@ -1,7 +1,7 @@
 # Jason Shadow — MusicWebsite
 
-A static, bilingual website for Jason Shadow — Singer · Speaker · Moderator
-(Sänger · Sprecher · Moderator), based in Rheine. Bookable for B2B occasions
+A static, bilingual website for Jason Shadow — The Healing Shadow — Singer ·
+Speaker · Moderator (Sänger · Sprecher · Moderator). Bookable for B2B occasions
 including galas, company anniversaries and restaurant events, and private
 celebrations including weddings. German is the primary language; English has its own
 crawlable URLs. The music brand is separate from Shadow’s Temptation and The
@@ -57,6 +57,12 @@ one-time entrance animations through the Web Animations API: content is visible
 by default, keyboard focus cancels movement, and reduced-motion preferences
 disable/cancel animations. `src/main.js` enhances navigation, media and the enquiry form;
 headings, descriptions, contacts and language links work without JavaScript.
+
+Keep the brand slogan exactly “The Healing Shadow” in both languages. The hero's
+`titleLines` define its intentional phrase breaks; keep their combined wording
+consistent with `hero.title`. Review both languages at phone and desktop widths
+when changing these short lines. The hero has one live-performance button beside
+the enquiry action; the portrait has no duplicate action overlay.
 
 `npm run generate` writes the main and secondary HTML. Both `npm run dev` and
 `npm run build` run it automatically. After editing content or templates while a

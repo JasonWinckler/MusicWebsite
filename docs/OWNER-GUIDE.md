@@ -18,6 +18,8 @@ Die öffentlichen Kontaktangaben, die Bild- und Videopfade und die komplette deu
 2. Aktualisieren Sie die entsprechende Stelle im Abschnitt `en`.
 3. Lassen Sie die Änderung im Pull Request bauen und prüfen. Bearbeiten Sie weder `dist/` noch die daraus erzeugte fertige HTML-Ausgabe.
 
+Der Brand-Slogan lautet in beiden Sprachen **The Healing Shadow**. Die Berufsbezeichnung bleibt **Sänger · Sprecher · Moderator** bzw. **Singer · Speaker · Moderator**. Beim Ändern der Einstiegsüberschrift müssen `hero.title` und die kurzen Zeilen in `hero.titleLines` denselben Text enthalten. Lassen Sie die Umbrüche auf Handy und Desktop prüfen.
+
 Eine passende Nachricht an einen KI-Assistenten lautet:
 
 > Ändere auf einem eigenen Branch den folgenden Text in `content/site.cjs`, auf Deutsch und Englisch: … . Bewahre die bestätigten Fakten. Baue die Website, prüfe beide Sprachfassungen ohne JavaScript sowie auf dem Handy und zeige mir den Pull Request. Nicht veröffentlichen.
