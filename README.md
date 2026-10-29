@@ -1,338 +1,180 @@
 # Jason Shadow — MusicWebsite
 
-Production repository for the public Jason Shadow artist, singer, speaker and
-booking website at [jason-shadow.com](https://jason-shadow.com/). It is a
-static, mobile-first Vite site hosted by Cloudflare Pages and does not require
-an application backend, database or runtime environment variables.
+A static, bilingual website for Jason Shadow’s live singing, event hosting and
+voice work, based in Rheine. German is the primary language; English has its own
+crawlable URLs. The music brand is separate from Shadow’s Temptation and The
+Order of Shadows. Do not introduce either brand’s private or adult content here.
 
-This README is the canonical handoff for a new Codex task or maintainer. Read
-it completely before changing the live brand, deployment or legal pages.
-
-## Production identity
-
-| Item | Production value |
-| --- | --- |
-| Repository | `JasonWinckler/MusicWebsite` |
-| Canonical domain | `https://jason-shadow.com` |
-| Optional alias | `https://www.jason-shadow.com` if configured in Cloudflare |
-| Hosting | Dedicated Cloudflare Pages project |
-| Production branch | `main` |
-| Build command | `npm run build` |
-| Build output | `dist` |
-| Runtime variables | None |
-| Backend/database | None |
-| Appwrite | No SDK, endpoint, build, hosting or runtime dependency |
-
-The music website is a separate brand from Shadow's Temptation and The Order
-of Shadows. Do not add adult-platform copy, private membership functions or
-Order-specific community content here unless the user explicitly changes that
-brand boundary.
-
-## Current site scope
-
-| Route | Purpose | Source |
-| --- | --- | --- |
-| `/` | Bilingual artist landing page, services, portfolio, news and booking | `index.html`, `src/main.js`, `script.js` |
-| `/affiliates/` | Public affiliate LinkHub and PayPal support action | `affiliates/index.html`, `src/affiliates.js` |
-| `/impressum/` | German legal notice | `impressum/index.html` |
-| `/datenschutz/` | German privacy notice | `datenschutz/index.html` |
-
-The homepage has English and German UI copy, responsive navigation, hero
-branding, presentation-video slot, three service cards, portfolio carousel,
-version-controlled news and a project-request form. The affiliate route uses
-the same brand shell with separate partner artwork.
-
-## Architecture
-
-```text
-GitHub main
-  |
-  | Cloudflare Pages Git integration
-  v
-npm run build
-  |-- Vite multi-page build
-  |-- fingerprinted JS/CSS and imported affiliate artwork
-  `-- scripts/copy-static.js
-       |-- copies uploads/
-       |-- writes dist/_redirects
-       `-- writes dist/_headers
-              |
-              v
-Cloudflare Pages --> jason-shadow.com
-```
-
-All editorial site data is shipped with the build. The browser does not ping a
-backend, query a database or need an API token.
-
-### Build entries
-
-`vite.config.js` defines four HTML entries: homepage, affiliates, impressum and
-datenschutz. `scripts/copy-static.js` then copies the root `uploads/` directory
-and writes Cloudflare Pages routing/security files.
-
-The generated redirects keep direct links and browser refreshes working:
-
-```text
-/affiliates/*  -> /affiliates/index.html
-/impressum/*   -> /impressum/index.html
-/datenschutz/* -> /datenschutz/index.html
-/*             -> /index.html
-```
-
-Existing output files take precedence over the fallback.
-
-## Repository layout
-
-| Path | Responsibility |
-| --- | --- |
-| `index.html` | Homepage document metadata and Vite entry |
-| `src/main.js` | Homepage markup and initial data rendering |
-| `script.js` | Active bilingual copy and homepage interactions; imported by `src/main.js` |
-| `src/data.js` | Navigation, services, portfolio, news and affiliate partner data |
-| `src/components.js` | Shared header, footer, mobile menu and reveal behavior |
-| `src/affiliates.js` | Affiliate cards, social/website links and PayPal support action |
-| `assets/css/` | Shared, homepage and affiliate styles |
-| `uploads/` | Homepage profile, banner, presentation and portfolio source media |
-| `affiliates/uploads/` | Affiliate-only artwork imported and fingerprinted by Vite |
-| `impressum/` | Legal notice entry |
-| `datenschutz/` | Privacy notice entry |
-| `scripts/copy-static.js` | Cloudflare output preparation |
-| `tests/visual.spec.js` | Route, responsive and interaction regression tests |
-| `playwright.config.js` | Desktop, Pixel 7 and iPad test projects |
-
-Do not edit generated `dist/` files. Change the sources and rebuild.
-
-## Content editing
-
-### Navigation and services
-
-Edit `navigation` and `services` in `src/data.js`. When customer-facing copy
-has a German translation in `script.js`, update both languages together.
-
-### Portfolio
-
-Each `portfolio` entry in `src/data.js` has a title, description and file stem.
-For a stem such as `Auftrag1`, the UI looks for:
-
-```text
-uploads/portfolio/Auftrag1.mp4
-uploads/portfolio/Auftrag1.png
-```
-
-Video takes precedence when available; the image or an explicit upload
-placeholder keeps the card usable otherwise. Preserve the carousel tests and
-verify that all media is licensed for publication.
-
-### Presentation video
-
-The homepage expects:
-
-```text
-uploads/about/introduction.mp4
-```
-
-Until that file exists, the designed placeholder and profile poster remain
-visible. The signature-song control is likewise currently a documented audio
-placeholder and must not claim playback is available until a real, licensed
-asset and interaction are implemented.
-
-### News
-
-`fallbackNews` in `src/data.js` is the only source of news. There is no CMS or
-remote feed. Edit, translate and review its release dates before publishing.
-
-### Profile and banner
-
-- `uploads/profile.png` — main profile image;
-- `uploads/banner.jfif` — main hero and affiliate banner;
-- `affiliates/uploads/profile.png` and `banner.jfif` — retained affiliate
-  source variants;
-- `affiliates/uploads/*.webp` — affiliate partner tiles.
-
-Keep images web-optimised, correctly licensed and free of embedded secrets or
-personal metadata that should not be public.
-
-## External integrations and privacy
-
-The static site currently uses only deliberate outbound integrations:
-
-- the booking form posts to `formsubmit.co` for
-  `business@jason-shadow.com`;
-- affiliate cards open external partner URLs and use `rel="sponsored"`;
-- social/profile links open their declared external destinations;
-- the support action opens the configured PayPal hosted donation page.
-
-The site has no account system, cookies, local/session storage, analytics
-pixel, database or cross-site tracking code. Do not add tracking or marketing
-scripts without an explicit privacy/legal decision and corresponding update to
-`datenschutz/index.html`.
-
-Because the booking form transfers name, email and message to FormSubmit, any
-change of provider, fields, recipient or retention representation must be
-reflected in the privacy notice before release.
-
-## Security and caching
-
-`scripts/copy-static.js` generates Cloudflare Pages headers that enforce:
-
-- `X-Content-Type-Options: nosniff`;
-- `Referrer-Policy: strict-origin-when-cross-origin`;
-- disabled camera, microphone and geolocation permissions;
-- `X-Frame-Options: DENY` and CSP `frame-ancestors 'none'`;
-- a restrictive Content Security Policy with an explicit FormSubmit action;
-- HTTPS upgrade for insecure subresources;
-- one-year immutable caching for fingerprinted `/assets/*` files.
-
-If a new external image, script, frame, form endpoint or connection is added,
-update the CSP narrowly rather than weakening it globally. Source images under
-`/uploads/` are not fingerprinted; replace them carefully and verify Cloudflare
-cache behavior after a deployment.
-
-Never commit credentials. Vite exposes every `VITE_*` value to browsers, so a
-future client-side environment variable may contain only public configuration.
-
-## Local development
-
-Prerequisites: a current supported Node.js release and npm.
-
-```bash
-npm ci
-npm run dev
-```
-
-No `.env.local` file is required. `.env.example` exists to make the absence of
-runtime variables explicit.
-
-Build and inspect the production output:
-
-```bash
-npm run build
-npm run preview
-```
-
-The build empties and recreates `dist/`, fingerprints imported JS/CSS/media,
-copies root uploads and writes `_redirects` plus `_headers`.
-
-## Tests and acceptance
-
-Install Playwright Chromium once when necessary:
-
-```bash
-npm run install:browsers
-```
-
-Run the production browser suite:
-
-```bash
-npm run test:browser
-```
-
-Playwright builds and previews the site, then checks desktop, Pixel 7 and iPad
-layouts. Existing coverage verifies:
-
-- all four routes load directly without horizontal overflow or page errors;
-- mobile navigation and Escape-key behavior;
-- German/English switching;
-- portfolio navigation and budget interaction;
-- affiliate images load from fingerprinted assets.
-
-A release is acceptable only when:
-
-- `npm run build` and `npm run test:browser` pass;
-- all four production routes load over valid HTTPS;
-- desktop, tablet and mobile layouts have no clipped text or media;
-- the booking form, affiliate links and PayPal action use the intended
-  destinations;
-- metadata, contact details and legal pages are consistent;
-- the browser console and network panel show no unexpected failures;
-- no adult-platform or Order-specific copy crossed the brand boundary.
-
-## Cloudflare Pages deployment
-
-The dedicated Pages project should remain connected to
-`JasonWinckler/MusicWebsite` with:
+## Production contract
 
 | Setting | Value |
 | --- | --- |
+| Repository | `JasonWinckler/MusicWebsite` |
 | Production branch | `main` |
-| Root directory | Repository root |
+| Public domain | `https://jason-shadow.com` |
+| Hosting | Cloudflare Pages |
 | Build command | `npm run build` |
 | Output directory | `dist` |
-| Runtime variables | None |
-| Custom domain | `jason-shadow.com` |
-| Optional custom domain | `www.jason-shadow.com` |
+| Backend, database, runtime secrets | None |
 
-Normal content releases require only a tested push to `main`; they do not
-require a DNS change. The zone and mail records must not be modified as part of
-a website deployment. In particular, preserve Microsoft 365 MX, SPF, DKIM and
-DMARC records when working on the apex domain.
+This change prepares code for review; it does not itself publish the redesign.
+Do not merge or deploy without the owner’s instruction. Preserve the existing
+Cloudflare project, domain, Microsoft 365 mail records and DNS. No new paid
+service, CMS, analytics package or Appwrite integration is required.
 
-Cloudflare Pages provides deployment history. Roll back by promoting a known-
-good deployment. Do not re-point the domain to Appwrite as a release rollback.
+Read-only deployment inspection also found a legacy GitHub Pages configuration
+from `main:/`, alongside the Cloudflare Pages project `jason-shadow`. Neither
+configuration was changed. The `www` hostname returned HTTP 522 during the
+implementation check; treat this as an operator follow-up, not a reason to
+modify DNS or mail records during this redesign. Verify the intended host and
+redirect behaviour before an authorised release.
 
-## SEO and discoverability
+## Pages and source of truth
 
-Each HTML entry owns its `<title>` and description. Keep the public homepage
-focused on the Jason Shadow music/voice/hosting brand and use natural copy
-rather than keyword stuffing.
+| URL | Purpose | Source |
+| --- | --- | --- |
+| `/` | German services, real performance and enquiry | `content/site.cjs`, `scripts/render-pages.cjs` |
+| `/en/` | Complete English equivalent | same content and template |
+| `/affiliates/` | German affiliate links and support | `scripts/secondary-pages.cjs` |
+| `/en/affiliates/` | English affiliate links and support | same secondary template |
+| `/impressum/` | Existing German legal notice | `impressum/index.html` |
+| `/datenschutz/` | Existing German privacy notice, technical form details updated | `datenschutz/index.html` |
+| `/404.html` | Bilingual missing-page recovery | `scripts/secondary-pages.cjs` |
 
-When improving SEO, review together:
+Frequently edited offer copy, services and public contact configuration live in
+`content/site.cjs`. Main and affiliate HTML files are generated source artifacts;
+edit their content/template and regenerate rather than editing generated copy.
+Legal pages remain manually maintained source HTML. `assets/css/site.css` is the
+shared design. `src/main.js` enhances navigation, media and the enquiry form;
+headings, descriptions, contacts and language links work without JavaScript.
 
-- unique title and description per public route;
-- canonical URL and `www` redirect behavior;
-- Open Graph/Twitter preview image, title and description;
-- structured data appropriate to a performer or professional service;
-- `robots.txt` and `sitemap.xml` generation, which are not currently part of
-  this repository's build;
-- internal links, image alt text and real portfolio/news content;
-- Google Search Console verification without adding invasive tracking.
+`npm run generate` writes the main and secondary HTML. Both `npm run dev` and
+`npm run build` run it automatically. After editing content or templates while a
+development server is already running, run `npm run generate` again or restart
+the server to refresh the generated HTML. Do not edit files under `dist/`.
 
-Search indexing is not immediate and cannot be guaranteed by cookies or meta
-keywords. Avoid hidden text, unrelated terms and duplicated pages.
+See [the phone-friendly owner guide](docs/OWNER-GUIDE.md) for simple copy/media
+updates, real performance additions, Search Console and local-discovery steps.
+The owner does not need a desktop terminal: future changes can be made in GitHub
+in a phone browser or requested from an AI assistant on a review branch.
 
-## Troubleshooting
+## Assets and factual claims
 
-### A direct route shows the homepage
+Original media stays under `uploads/` for future editing. Only the optimised
+files under `public/media/` are shipped as performance and portrait assets. The
+current reference is the real KÖPI am Ring Rheine performance; do not infer a
+date, audience size, client endorsement or fee from the clip. Another existing
+file is not automatically an approved new portfolio reference.
 
-Build again and inspect `dist/_redirects`. Confirm that the matching route's
-HTML entry exists before the final `/* /index.html 200` fallback.
+Responsive portraits, the actual performance poster and the social-sharing
+image use existing material. Preserve originals. New media must have an
+accurate title/context and appropriate publication rights. Never invent reviews,
+credentials, repertoire, event experience, travel coverage or language fluency.
+Affiliate relationships are disclosed separately from customer references.
 
-### Images are missing after deployment
+Useful existing media URLs redirect explicitly:
 
-Distinguish imported affiliate assets under fingerprinted `/assets/` from
-copied root `/uploads/`. Check filename case, build output and browser CSP/cache
-before changing paths.
+- `/uploads/portfolio/Auftrag1.mp4` → `/media/koepi-live.mp4`;
+- `/uploads/profile.png` → `/media/portrait-1023.webp`.
 
-### Booking submission is blocked
+## Development and useful validation
 
-Verify the exact form action, FormSubmit activation/recipient state and the
-`form-action` CSP directive. Do not loosen all CSP sources to fix one endpoint.
+Use the existing checkout in an isolated cloud task; do not create a worktree
+unless explicitly requested. Inspect Git status and current instructions first.
+Node.js must satisfy Vite’s requirement (`^20.19.0 || >=22.12.0`); the cloud setup
+uses Node 24.19.0 and npm 11.9.0. No `.env.local` file is needed. Never put secrets
+in Vite variables because browser builds expose them.
 
-### Local tests fail to start
+```bash
+npm ci
+npm run install:browsers
+npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
+```
 
-Confirm Chromium is installed, port `4173` is free and `npm run build` succeeds.
-Playwright starts the preview itself; an unrelated stale server can hide build
-problems when `reuseExistingServer` is enabled locally.
+For the production output and browser tests:
 
-### Cloudflare deploys an old revision
+```bash
+npm run build
+CI=1 npm run test:browser -- --workers=2
+```
 
-Check the Pages repository connection and production branch. A preview branch
-deployment does not update the production custom domain.
+Playwright builds and starts the production preview on port 4173 itself. Keep
+that port free; `CI=1` prevents accidental reuse of a stale preview. Reports and
+screenshots are generated in ignored `playwright-report/`, `test-results/` and
+`screenshots/` directories. There is no separate lint or typecheck script.
 
-## Starting a new Codex task
+For manual inspection after testing:
 
-Use the repository's current `main` branch and begin with:
+```bash
+npm run preview -- --port 4173 --strictPort
+```
 
-> Read `README.md` completely before acting. Treat `jason-shadow.com` as the
-> live, static Cloudflare Pages site for the separate Jason Shadow music,
-> singer, speaker and booking brand. Inspect the current git status and Pages
-> configuration, preserve unrelated work, do not introduce Appwrite or private
-> browser credentials, and do not mix in Shadow's Temptation or Order of
-> Shadows content. Implement the requested change in source files, run the
-> production build and proportional Playwright tests, then report the exact
-> files, deployment state and any remaining authenticated operator step.
+The dependency-free Node preview server serves the actual `dist` files with
+correct MIME types, security headers, media byte ranges and real 404 responses.
+It is a local validation server, not a replacement production host. Vite’s
+editor server is configured as a multi-page app; check production routing using
+the production preview rather than relying on development fallback behaviour.
 
-For every handoff, state whether the task affects content, media, external
-integrations, legal/privacy text, Cloudflare Pages, DNS or email records. Never
-infer permission for a production DNS or mail-record mutation from an ordinary
-website edit.
+## Enquiry and privacy
+
+The existing public email is `business@jason-shadow.com`. The native form retains
+`https://formsubmit.co/business@jason-shadow.com`. JavaScript uses the same
+recipient through FormSubmit’s AJAX endpoint for translated in-page handling.
+The form requests name, email, desired service and a message; date and location
+can be supplied in the message. It does not suggest a fee or collect a budget.
+
+Automated tests must mock FormSubmit. Never send real enquiries or donations as
+a test. A success display is conditional on an accepted FormSubmit response;
+it does not promise email delivery or confirm a booking. The owner still needs
+to verify recipient activation and an actual received email outside automation.
+The public email is always available as an alternative.
+
+The privacy notice describes the current fields, AJAX/native transfer and
+email alternative. The verified hosting correction, current § 5 DDG citation and closure of the EU
+ODR platform are reflected in the legal notice; personal legal/contact details are
+preserved. These technical edits are not a legal review or certification. The
+owner should review the remaining legal statements, retention wording and
+provider arrangements with qualified advice if needed.
+
+## SEO, routing and security
+
+The build emits static HTML, unique titles/descriptions, production canonicals,
+reciprocal language alternates for equivalent pages, social metadata,
+`robots.txt` and `sitemap.xml`. No fake review, business address, VideoObject
+upload date or rating is generated. The six genuine indexable page URLs are in
+the sitemap. Existing German legal pages are linked as German on English pages.
+
+Cloudflare Pages uses the actual directory HTML pages. A top-level `404.html`
+disables its implicit SPA fallback. `_redirects` contains only deliberate
+legacy-media redirects; no catch-all routes nonexistent pages or missing assets
+to a successful homepage response. `robots.txt` is plain text and `sitemap.xml`
+is XML. Missing paths return 404, including missing image/script requests.
+
+`_headers` applies a restrictive CSP, `nosniff`, referrer policy, disabled camera,
+microphone and geolocation, and frame protection. Inline JSON-LD receives hashes
+generated from the built output; executable inline scripts are not broadly
+allowed. FormSubmit is the only extra connection/form destination. Fingerprinted
+Vite assets have immutable caching. Images under `/media/` use stable filenames:
+replace them and verify deployed caching when releasing new media.
+
+Cloudflare `pages.dev` project and branch preview hostnames receive
+`X-Robots-Tag: noindex, nofollow`; custom production-domain content remains
+indexable. A Cloudflare branch build (`CF_PAGES=1`, branch other than `main`)
+also receives a global noindex header. For a separately configured custom
+staging host, verify this branch flag or configure its own noindex header before
+sharing it. Do not block preview crawling in robots.txt and expect Google to see
+a noindex header: noindex requires the crawler to be allowed to fetch it.
+
+Build output is not proof of live deployment, public HTTPS, indexing, email
+delivery or rankings. Before an authorised release, check production host
+headers, canonical redirects and the form’s received-email path separately.
+Search Console ownership and Business Profile eligibility are owner actions,
+not things a site build can assert.
+
+Official references checked during implementation (29 October 2026):
+
+- [Cloudflare: serving pages and 404 behaviour](https://developers.cloudflare.com/pages/configuration/serving-pages/)
+- [Cloudflare: response headers and preview hostname patterns](https://developers.cloudflare.com/pages/configuration/headers/)
+- [European Commission: ODR platform discontinued on 20 July 2025](https://consumer-redress.ec.europa.eu/site-relocation_en)
+
+- [Official statute: § 5 Digitale-Dienste-Gesetz](https://www.gesetze-im-internet.de/ddg/__5.html)

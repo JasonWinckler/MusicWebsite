@@ -1,0 +1,32 @@
+[
+  {
+    "name": "desktop",
+    "fcp": 192,
+    "lcp": 192,
+    "cls": 0,
+    "transferBytes": 160714,
+    "requests": 5,
+    "videoDownloads": 0,
+    "portrait": "http://127.0.0.1:5173/media/portrait-800.webp",
+    "viewport": {
+      "width": 1440,
+      "height": 1100,
+      "dpr": 1
+    }
+  },
+  {
+    "name": "phone",
+    "fcp": 144,
+    "lcp": 144,
+    "cls": 0,
+    "transferBytes": 197826,
+    "requests": 5,
+    "videoDownloads": 0,
+    "portrait": "http://127.0.0.1:5173/media/portrait-1023.webp",
+    "viewport": {
+      "width": 412,
+      "height": 839,
+      "dpr": 2.625
+    }
+  }
+]

@@ -1,17 +1,111 @@
-import '../assets/css/base.css';
-import '../assets/css/home.css';
-import { header, footer } from './components.js';
-import { services, portfolio, fallbackNews } from './data.js';
-
-const cards = portfolio.map(([title, text, file], index) => `<article class="portfolio-preview-card${index === 0 ? ' is-active' : ''}" data-portfolio-card data-title-key="portfolioItem${index + 1}Title" data-text-key="portfolioItem${index + 1}Text"><div class="portfolio-media"><video class="portfolio-video" controls preload="metadata" aria-label="${title}"><source src="/uploads/portfolio/${file}.mp4" type="video/mp4"></video><picture><img src="/uploads/portfolio/${file}.png" alt="${title}" loading="lazy" onerror="this.hidden=true"></picture><span class="media-fallback">Upload: uploads/portfolio/${file}.png or ${file}.mp4</span></div><h3 data-i18n="portfolioItem${index + 1}Title">${title}</h3></article>`).join('');
-const renderNews = items => items.map(([dateTime, date, title, text]) => `<article class="news-card"><time datetime="${dateTime}">${date}</time><h3>${title}</h3><p>${text}</p></article>`).join('');
-
-document.querySelector('#app').innerHTML = `<div class="ember-field" aria-hidden="true"></div>${header()}<main id="top">
-<section class="hero" data-animate="rise"><div class="banner-wrap"><img class="banner" src="/uploads/banner.jfif" alt="Dark stage banner with microphone and spotlights"><div class="banner-overlay"></div></div><div class="hero-content"><img class="avatar" src="/uploads/profile.png" alt="Profile photo of Jason Shadow"><p class="eyebrow" data-i18n="heroEyebrow">Baritone Singer · Speaker · Host</p><h1>Jason Shadow</h1><p class="tagline" data-i18n="heroTagline">A distinctive voice between goosebumps, storytelling and dark elegance — for music, stages, events, keynotes and brand moments.</p><div class="signature-player"><button class="play-button" type="button" aria-label="Play signature song"><span aria-hidden="true">▶</span></button><div><strong>The Healing Shadow</strong><small>Play-button placeholder · Audio coming soon</small></div></div><div class="hero-actions"><a class="primary-action" href="#booking">Book now</a><a class="secondary-action" href="#portfolio">View portfolio</a><a class="secondary-action" href="https://www.linkedin.com/in/jason-winckler/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></section>
-<section id="about" class="section about-section about-section-centered" data-animate="rise"><div class="section-heading"><p class="eyebrow">About Me</p><h2>Presentation Video</h2></div><div class="about-video-card"><video class="intro-video" controls preload="metadata" poster="/uploads/profile.png" aria-label="Introduction video"><source src="/uploads/about/introduction.mp4" type="video/mp4"></video><div class="video-placeholder"><span class="play-button" aria-hidden="true">▶</span><strong>Presentation video</strong><small>Upload your MP4 as uploads/about/introduction.mp4</small></div></div></section>
-<section id="services" class="section services-section" data-animate="rise"><div class="section-heading"><p class="eyebrow">Services</p><h2>Services</h2><p>A warm baritone voice and confident stage presence for live moments, hosted events and spoken productions.</p></div><div class="service-list service-list-centered">${services.map(([t,d],i)=>`<div><strong data-i18n="${['serviceLiveTitle','serviceHostTitle','serviceProjectTitle'][i]}">${t}</strong><span>${d}</span></div>`).join('')}</div></section>
-<section id="portfolio" class="section portfolio-section" data-animate="rise"><div class="section-heading"><p class="eyebrow">Portfolio</p><h2>Portfolio</h2><p>My three biggest projects</p></div><div class="portfolio-stage"><div class="portfolio-track">${cards}</div><div class="portfolio-controls"><button type="button" class="portfolio-arrow" data-portfolio-prev aria-label="Previous portfolio item">‹</button><button type="button" class="portfolio-arrow" data-portfolio-next aria-label="Next portfolio item">›</button></div><div class="portfolio-active-copy" aria-live="polite"><h3 data-portfolio-active-title>KÖPI am Ring Rheine — Singer</h3><p data-portfolio-active-text>This is an example order I had.</p></div></div></section>
-<section id="news" class="section" data-animate="rise"><div class="section-heading"><p class="eyebrow">News</p><h2>Latest news</h2><p class="content-status" data-news-status role="status">Current highlights</p></div><div class="news-grid" data-news-grid>${renderNews(fallbackNews)}</div></section>
-<section id="booking" class="section booking-section" data-animate="rise"><div class="section-heading"><p class="eyebrow">Contact &amp; Booking</p><h2>Request a project</h2><p>Briefly describe your project, choose your budget and Jason will get back to you for the next steps.</p></div><form class="booking-form" action="https://formsubmit.co/business@jason-shadow.com" method="post"><input type="hidden" name="_subject" value="Neue Booking-Anfrage über jason-shadow.com"><label><span>Name</span><input name="Name" autocomplete="name" required></label><label><span>Email</span><input name="E-Mail" type="email" autocomplete="email" required></label><label><span>Project type</span><select name="Projektart" required><option value="">Please select</option><option>Singing / Feature</option><option>Speaker / Hosting</option><option>Speech / Keynote</option><option>Live performance / Event</option><option>Other</option></select></label><label><span>Budget: <output id="budget-output" for="budget">500 €</output></span><input id="budget" name="Budget" type="range" min="150" max="1000" step="50" value="500"></label><label class="full-span"><span>Message</span><textarea name="Nachricht" rows="6" required></textarea></label><button class="primary-action full-span" type="submit">Send request</button></form></section></main>${footer()}`;
-
-import('../script.js');
+// HTML delivers all content. JavaScript enhances navigation, media and enquiries.
+document.documentElement.classList.add('js');
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('#mobile-menu');
+const mobile = matchMedia('(max-width: 850px)');
+if (toggle && menu) {
+  toggle.hidden = false;
+  const setMenu = (open, restoreFocus = false) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
+    menu.hidden = !open;
+    if (open) menu.querySelector('a')?.focus();
+    if (!open && restoreFocus) toggle.focus();
+  };
+  toggle.addEventListener('click', () => setMenu(menu.hidden, !menu.hidden));
+  menu.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link) return;
+    setMenu(false);
+    const target = document.querySelector(link.hash);
+    if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }); }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !menu.hidden) { event.preventDefault(); setMenu(false, true); }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!menu.hidden && !event.target.closest('.site-header')) setMenu(false);
+  });
+  // Disclosure navigation is not a modal; retain the normal page Tab order.
+  document.querySelector('.site-header').addEventListener('focusout', event => {
+    if (!menu.hidden && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setMenu(false);
+  });
+  mobile.addEventListener('change', () => setMenu(false));
+}
+document.querySelectorAll('.language-links a').forEach(link => {
+  link.addEventListener('click', () => { if (location.hash) link.hash = location.hash; });
+});
+const legacySections = { '#about': '#ueber-mich', '#services': '#leistungen', '#portfolio': '#eindruck', '#booking': '#kontakt', '#top': '#main' };
+if (legacySections[location.hash]) {
+  const anchor = legacySections[location.hash];
+  history.replaceState(null, '', anchor);
+  document.querySelector(anchor)?.scrollIntoView();
+}
+document.querySelectorAll('video').forEach(video => {
+  const fallback = video.closest('figure')?.querySelector('[data-video-fallback]');
+  const showFallback = () => { if (fallback) fallback.hidden = false; };
+  video.addEventListener('error', showFallback);
+  video.querySelectorAll('source').forEach(source => source.addEventListener('error', showFallback));
+  video.addEventListener('play', () => {
+    document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
+  });
+});
+const form = document.querySelector('.enquiry-form');
+if (form) {
+  const fields = [...form.querySelectorAll('[required]')];
+  const status = form.querySelector('.form-status');
+  const submit = form.querySelector('button[type="submit"]');
+  const label = form.querySelector('[data-submit-label]');
+  const originalLabel = label.textContent;
+  let sending = false;
+  form.noValidate = true; // Native validation remains when JavaScript is unavailable.
+  const validateField = field => {
+    const error = document.getElementById(`${field.id}-error`);
+    const valid = field.value.trim() !== '' && field.validity.valid;
+    field.setAttribute('aria-invalid', String(!valid));
+    error.hidden = valid;
+    error.textContent = valid ? '' : field.validity.typeMismatch ? form.dataset.invalidEmail : form.dataset.required;
+    return valid;
+  };
+  const announce = (message, state) => {
+    status.dataset.state = state;
+    status.setAttribute('role', state === 'error' ? 'alert' : 'status');
+    status.textContent = message;
+  };
+  fields.forEach(field => field.addEventListener('input', () => {
+    if (field.getAttribute('aria-invalid') === 'true') validateField(field);
+  }));
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (sending) return;
+    const invalid = fields.filter(field => !validateField(field));
+    if (invalid.length) { announce(form.dataset.invalid, 'error'); invalid[0].focus(); return; }
+    sending = true;
+    submit.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    label.textContent = form.dataset.pending;
+    announce(form.dataset.pending, 'pending');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.service = form.elements.service.selectedOptions[0].textContent;
+      const endpoint = new URL(form.action);
+      endpoint.pathname = `/ajax${endpoint.pathname}`;
+      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
+      const result = await response.json();
+      if (!response.ok || (result.success !== true && result.success !== 'true')) throw new Error('Submission was not accepted');
+      announce(form.dataset.success, 'success');
+      form.reset();
+      fields.forEach(field => field.removeAttribute('aria-invalid'));
+    } catch { announce(form.dataset.error, 'error'); }
+    finally {
+      clearTimeout(timeout);
+      sending = false;
+      submit.disabled = false;
+      form.removeAttribute('aria-busy');
+      label.textContent = originalLabel;
+      status.focus({ preventScroll: true });
+    }
+  });
+}
