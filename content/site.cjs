@@ -3,6 +3,11 @@
  * These are confirmed public facts and proposed enquiry steps, not availability,
  * repertoire, travel, equipment or pricing promises. Never put secrets here.
  */
+const occupation = {
+  de: 'Sänger · Sprecher · Moderator',
+  en: 'Singer · Speaker · Moderator',
+};
+
 module.exports = {
   site: {
     name: 'Jason Shadow',
@@ -17,8 +22,9 @@ module.exports = {
     },
   },
   de: {
-    title: 'Jason Shadow | Sänger & Eventmoderation aus Rheine',
-    description: 'Bariton-Gesang, Eventmoderation und Sprecher für Produktionen: Jason Shadow aus Rheine. Echten Live-Eindruck ansehen und Ihren Anlass anfragen.',
+    occupation: occupation.de,
+    title: `Jason Shadow | ${occupation.de} aus Rheine`,
+    description: `Jason Shadow: ${occupation.de} aus Rheine. Buchbar für Galas, Firmenjubiläen, Restaurant-Events und private Feiern wie Hochzeiten.`,
     nav: [
       { href: '#eindruck', label: 'Live-Eindruck' },
       { href: '#leistungen', label: 'Leistungen' },
@@ -33,10 +39,10 @@ module.exports = {
     cta: 'Auftritt anfragen',
     watch: 'Live-Eindruck ansehen',
     hero: {
-      eyebrow: 'Jason Shadow · Bariton aus Rheine',
+      eyebrow: 'Jason Shadow · Aus Rheine',
       title: 'Markante Stimme. Besondere Momente.',
-      lead: 'Live-Gesang, Eventmoderation und eine Stimme für Ihre Produktion.',
-      detail: 'Für Firmenevents, stilvolle private Feiern und Anlässe, die eine persönliche Note verdienen.',
+      lead: occupation.de,
+      detail: 'Buchbar für B2B-Events wie Galas, Firmenjubiläen und Veranstaltungen in Restaurants sowie für private Feiern wie Hochzeiten – und Ihren besonderen Anlass.',
     },
     performance: {
       eyebrow: 'Ein echter Einblick',
@@ -53,7 +59,7 @@ module.exports = {
       items: [
         {
           title: 'Live-Gesang',
-          text: 'Bariton-Gesang für einen Moment, der zum Zuhören einlädt. Für Ihre Firmenveranstaltung, private Feier oder einen besonderen Programmpunkt.',
+          text: 'Bariton-Gesang für einen Moment, der zum Zuhören einlädt. Für Ihre Gala, Ihr Firmenjubiläum, einen Abend im Restaurant, Ihre Hochzeit oder eine andere Feier.',
           detail: 'Wir besprechen Anlass, Musikwünsche und den Platz des Auftritts in Ihrem Ablauf.',
         },
         {
@@ -73,7 +79,7 @@ module.exports = {
       eyebrow: 'Die Person hinter der Stimme',
       title: 'Ich bin Jason Shadow.',
       paragraphs: [
-        'Als Bariton, Moderator und Sprecher aus Rheine verbinde ich Musik und Worte mit einem persönlichen Stil und Sinn für dunkle Eleganz.',
+        'Als Sänger, Sprecher und Moderator aus Rheine verbinde ich Musik und Worte mit einem persönlichen Stil und Sinn für dunkle Eleganz. Meine Gesangsstimme ist ein Bariton.',
         'Mir ist wichtig, dass mein Beitrag zu Ihrem Anlass passt. Deshalb beginnt unsere Zusammenarbeit mit Ihrer Idee: Was möchten Sie Ihren Gästen mitgeben, und welche Stimmung soll entstehen?',
         'Der Live-Mitschnitt gibt Ihnen einen ersten Eindruck von mir. Alles Weitere besprechen wir direkt miteinander.',
       ],
@@ -91,7 +97,7 @@ module.exports = {
       eyebrow: 'Gut zu wissen',
       title: 'Fragen vor dem ersten Kontakt.',
       items: [
-        { question: 'Für welche Veranstaltungen kann ich Sie anfragen?', answer: 'Sie können Live-Gesang oder Moderation für Firmenevents, private Feiern und besondere Anlässe anfragen. Entscheidend sind Ihr Publikum, die gewünschte Atmosphäre und der Ablauf. Beschreiben Sie Ihre Idee – dann klären wir, ob mein Beitrag dazu passt.' },
+        { question: 'Für welche Veranstaltungen kann ich Sie buchen?', answer: 'Ich bin für B2B-Veranstaltungen wie Galas, Firmenjubiläen und Events in Restaurants sowie für private Feiern wie Hochzeiten buchbar. Auch andere Anlässe sind willkommen. Beschreiben Sie Ihre Idee – dann besprechen wir den passenden Beitrag, Termin und Ablauf.' },
         { question: 'Kann ich Gesang und Moderation kombinieren?', answer: 'Gern können Sie beides zusammen anfragen. Welche Kombination sinnvoll ist, besprechen wir anhand Ihres Programms und der Rahmenbedingungen.' },
         { question: 'Sind bestimmte Lieder oder eine bestimmte Sprache möglich?', answer: 'Teilen Sie mir Ihre Wünsche frühzeitig mit. Repertoire, Sprache und eine mögliche Vorbereitung besprechen wir individuell.' },
         { question: 'Wo sind Auftritte möglich?', answer: 'Mein Standort ist Rheine in Nordrhein-Westfalen. Bitte nennen Sie den Veranstaltungsort in Ihrer Anfrage. Ob und unter welchen Bedingungen ein Auftritt dort möglich ist, klären wir direkt.' },
@@ -132,7 +138,7 @@ module.exports = {
       },
     },
     footer: {
-      description: 'Live-Gesang · Eventmoderation · Sprecher aus Rheine',
+      description: `${occupation.de} · Rheine`,
       affiliates: 'Affiliate-Links',
       legal: 'Impressum',
       privacy: 'Datenschutz',
@@ -142,8 +148,9 @@ module.exports = {
     portraitAlt: 'Porträt von Jason Shadow',
   },
   en: {
-    title: 'Jason Shadow | Baritone Singer & Event Host in Rheine',
-    description: 'Live singing, event hosting and voiceover with Jason Shadow, a baritone based in Rheine, Germany. Watch a real performance and enquire about your occasion.',
+    occupation: occupation.en,
+    title: `Jason Shadow | ${occupation.en} in Rheine`,
+    description: `Jason Shadow: ${occupation.en} based in Rheine. Available for galas, company anniversaries, restaurant events and private celebrations such as weddings.`,
     nav: [
       { href: '#eindruck', label: 'Live impression' },
       { href: '#leistungen', label: 'Services' },
@@ -158,10 +165,10 @@ module.exports = {
     cta: 'Enquire about your event',
     watch: 'Watch a live performance',
     hero: {
-      eyebrow: 'Jason Shadow · Baritone based in Rheine',
+      eyebrow: 'Jason Shadow · Based in Rheine',
       title: 'A distinctive voice. A personal moment.',
-      lead: 'Live singing, event hosting and a voice for your production.',
-      detail: 'For corporate events, elegant private celebrations and occasions that deserve a personal touch.',
+      lead: occupation.en,
+      detail: 'Available for B2B events such as galas, company anniversaries and restaurant events, as well as private celebrations including weddings – and your special occasion.',
     },
     performance: {
       eyebrow: 'A real first impression',
@@ -178,7 +185,7 @@ module.exports = {
       items: [
         {
           title: 'Live singing',
-          text: 'Baritone vocals for a moment that invites people to listen. Enquire for your corporate event, private celebration or a particular part of your programme.',
+          text: 'Baritone vocals for a moment that invites people to listen. For your gala, company anniversary, restaurant evening, wedding or another celebration.',
           detail: 'We discuss your occasion, musical preferences and how the performance could fit into your plans.',
         },
         {
@@ -198,7 +205,7 @@ module.exports = {
       eyebrow: 'The person behind the voice',
       title: 'I’m Jason Shadow.',
       paragraphs: [
-        'I’m a baritone singer, event host and voiceover artist based in Rheine, Germany. My approach brings music and words together with a personal style and a touch of dark elegance.',
+        'I’m a singer, speaker and moderator based in Rheine, Germany. My singing voice is a baritone. My approach brings music and words together with a personal style and a touch of dark elegance.',
         'What matters to me is how my contribution fits your occasion. Our conversation starts with your idea: what would you like your guests to take away, and what atmosphere do you want to create?',
         'The live recording is a first introduction. We can discuss the rest directly.',
       ],
@@ -216,7 +223,7 @@ module.exports = {
       eyebrow: 'Before you get in touch',
       title: 'A few useful answers.',
       items: [
-        { question: 'What kinds of event can I enquire about?', answer: 'You can enquire about live singing or hosting for corporate events, private celebrations and special occasions. The audience, atmosphere and programme matter most. Describe your idea and we can discuss whether my contribution is a good fit.' },
+        { question: 'What kinds of event can I book you for?', answer: 'I am available for B2B events such as galas, company anniversaries and restaurant events, as well as private celebrations including weddings. Other occasions are welcome too. Describe your idea so we can discuss a suitable contribution, date and programme.' },
         { question: 'Can singing and hosting be combined?', answer: 'You are welcome to enquire about both. We can discuss a suitable combination based on your programme and practical arrangements.' },
         { question: 'Can I request particular songs or a performance language?', answer: 'Please share your preferences early. Repertoire, language and any preparation are discussed individually.' },
         { question: 'Where can you perform?', answer: 'I am based in Rheine, North Rhine-Westphalia, Germany. Include the event location in your enquiry so we can discuss whether a performance there is possible and what arrangements it would involve.' },
@@ -257,7 +264,7 @@ module.exports = {
       },
     },
     footer: {
-      description: 'Live singing · Event hosting · Voiceover from Rheine',
+      description: `${occupation.en} · Rheine`,
       affiliates: 'Affiliate links',
       legal: 'Legal notice (German)',
       privacy: 'Privacy notice (German)',

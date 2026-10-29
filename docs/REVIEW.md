@@ -1,13 +1,15 @@
 # Website-Umbau zur Prüfung
 
 Stand: 29. Oktober 2026. Diese Fassung wurde auf dem Branch
-`feat/credible-bilingual-artist-site` vorbereitet. Die Produktionsseite und die
+`fix/occupation-and-event-offering` als Korrektur des bereits zusammengeführten Umbaus vorbereitet. Die Produktionsseite und die
 Umgebungskonfiguration wurden nicht veröffentlicht oder umgestellt.
 
 ## Was sich geändert hat
 
-Die Website stellt Jason Shadow als Bariton, Eventmoderator und Sprecher aus
-Rheine vor. Die Angebote sind konkret beschrieben, ohne erfundene Erfahrung,
+Die Website stellt Jason Shadow als „Sänger · Sprecher · Moderator“ bzw.
+„Singer · Speaker · Moderator“ aus Rheine vor. Er ist für B2B-Events wie Galas,
+Firmenjubiläen und Veranstaltungen in Restaurants sowie für private Feiern wie
+Hochzeiten buchbar. Die Angebote sind konkret beschrieben, ohne erfundene Erfahrung,
 VIP-Referenzen, Repertoire-, Reise- oder Verfügbarkeitszusagen. Deutsch steht
 unter `/`, Englisch unter `/en/`; beide Seiten enthalten die wichtigen Inhalte
 bereits im HTML. Ein echter KÖPI-Mitschnitt ersetzt leere Portfolio-Plätze,
@@ -48,7 +50,14 @@ Abschnitts nicht darüberliegen.
 
 ## Prüfung
 
-`npm run build` und der abschließende Lauf
+Die aktuelle Textkorrektur wurde mit Produktionsbuild sowie den bestehenden
+Seiten-, Layout-, Ohne-JavaScript- und Screenshot-Prüfungen kontrolliert:
+**26 bestanden, 1 beabsichtigte Screenshot-Auslassung, 0 Fehler**. Die exakte
+Berufsbezeichnung in Hero, Titel und Person-`jobTitle` sowie alle genannten
+Veranstaltungsbeispiele wurden zusätzlich im gebauten HTML beider Sprachen
+geprüft. Die Screenshots zeigen diesen korrigierten Stand.
+
+Beim ursprünglichen Umbau waren `npm run build` und der vollständige Lauf
 `CI=1 npm run test:browser -- --workers=2` waren erfolgreich:
 **64 bestanden, 2 beabsichtigt übersprungen, 0 Fehler** (52,9 Sekunden).
 Übersprungen wurden das ausschließlich mobile Menüszenario am Desktop und
@@ -81,7 +90,8 @@ Transkription liegt nicht vor; es wurden keine Untertitel erfunden.
 
 ## Gemessene Ladeeigenschaften
 
-Ein einzelner lokaler Chromium-Aufruf je Gerät, neue Browserseite, ohne Netzwerk-
+Messung des ursprünglichen Umbaus vor der Textkorrektur: ein einzelner lokaler
+Chromium-Aufruf je Gerät, neue Browserseite, ohne Netzwerk-
 oder CPU-Drosselung, nach 1,5 Sekunden Beobachtung. Die Werte sind keine
 Lighthouse-Scores, keine Mobilfunkmessung und keine Live-Core-Web-Vitals.
 
