@@ -1,69 +1,74 @@
-# The Healing Shadow — Texte und Einstieg zur Prüfung
+# Neues Logo und Bordeaux-Gold-Gestaltung
 
-Stand: 29. Oktober 2026. Branch: `fix/brand-copy-and-hero-layout`.
-Auf Basis des veröffentlichten Stands nach PR #68 vorbereitet.
+Stand: 29. Oktober 2026. Branch: `feat/logo-and-burgundy-brand`.
+Basis ist der aktuelle Hauptbranch einschließlich des Logo-Uploads `9a74252`.
 
-## Änderungen
+## Umsetzung
 
-Der Einstieg trägt den Brand-Slogan **The Healing Shadow** in beiden Sprachen.
-Die Überschrift lautet „Eine Stimme. Die berührt.“ bzw. „A voice. That stays.“.
-Zwei explizite, kurze Textzeilen ersetzen die langen, automatisch getrennten
-Sätze. Ihre Schriftgröße und Abstände passen sich der Bildschirmbreite an.
-Bei vergrößerter Nutzerschrift dürfen die Zeilen weiter umbrechen.
+Das Original liegt unter [`uploads/logo.png`](../uploads/logo.png) und bleibt
+unverändert. Die Navigation zeigt einen CSS-Ausschnitt mit dem echten
+JS-Monogramm neben dem lesbaren Künstlernamen. Fußzeilen und Affiliate-Profil
+zeigen die vollständige Wortmarke im Originalverhältnis 2:1. Das Porträt steht
+unterhalb des Affiliate-Logos, damit es keine Schrift überdeckt.
 
-Der zweite Live-Button auf dem Porträt ist entfernt. Neben „Auftritt anfragen“
-bleibt genau ein „Live erleben“-Button; die Abschnittsnavigation führt ebenfalls
-zum Mitschnitt. Das Porträt erhält passend zum tatsächlichen Layout kleinere
-Bildquellen auf Handys.
+Hintergründe, Karten, Navigation, Formular, Fußzeilen und Hover-Zustände greifen
+die Farben des Logos auf: tiefes Bordeaux (`#240007`), warmes Gold (`#efd18a`)
+und Elfenbein (`#fff5df`). Die Browser-Themenfarbe ist ebenfalls Bordeaux.
+Die Bilder und Plattformfarben der Partner bleiben erhalten.
 
-Leistungsbeschreibungen, Über-mich-Text, Ablauf, FAQ und Kontakt sind in Deutsch
-und Englisch kürzer und direkter formuliert. Der Slogan erscheint auch in den
-Seiten- und Vorschau-Metadaten. Die Berufsbezeichnung bleibt exakt
-**Sänger · Sprecher · Moderator** / **Singer · Speaker · Moderator**.
-Galas, Firmenjubiläen, Restaurant-Veranstaltungen, Hochzeiten und weitere private
-Anlässe bleiben ausdrücklich im Angebot.
+Die bestehende responsive Anordnung, Animationen, Texte, Berufsbezeichnung,
+Anfragefunktionen und Affiliate-Ziele bleiben bestehen. Der Einstieg enthält
+weiterhin genau einen Live-Button. Die Rechtstexte wurden nicht geändert;
+auf diesen Seiten wurden nur Logo, Stylesheet und Themenfarbe angepasst.
 
-Die Affiliate-Seiten und ihre vorhandenen Bilder, Buttons und Ziele bleiben
-unverändert. Es gibt keine Änderungen an Formularlogik, Animationslogik,
-Abhängigkeiten, Rechtsseiten, DNS oder E-Mail-Konfiguration.
+Der 404-Rückweg hatte durch eine allgemeine Textlink-Regel Gold auf Gold.
+Buttons sind nun von dieser Regel ausgenommen, sodass ihre Beschriftung ihren
+vorgesehenen dunklen Kontrast behält.
 
-## Aktuelle Ansichten
+## Ansichten
 
-Die Homepage-Bilder wurden für diese Änderung neu aufgenommen. Desktop:
-1440×1100 CSS-Pixel; Handy: 412×839 CSS-Pixel. Die Kontakt-Detailbilder blenden
-nur für den Bildausschnitt die feststehende Navigation und den Sprunglink aus.
-Die vollständigen Seiten und Einstiegsbilder zeigen die unveränderte Darstellung.
+Alle unten verlinkten Homepage- und Affiliate-Bilder wurden für diese Fassung
+neu aufgenommen: Desktop 1440×1100, Handy 412×839 CSS-Pixel. Für Ganzseitenbilder
+werden auch verzögert geladene Logos vorab dekodiert. Kontakt-Detailbilder
+lassen nur im Bildausschnitt die feststehende Navigation und den Sprunglink weg.
 
 | Ansicht | Deutsch | Englisch |
 | --- | --- | --- |
-| Desktop vollständig | [Bild](review/de-desktop-full.png) | [Bild](review/en-desktop-full.png) |
-| Handy vollständig | [Bild](review/de-phone-full.png) | [Bild](review/en-phone-full.png) |
+| Hauptseite, Desktop | [Bild](review/de-desktop-full.png) | [Bild](review/en-desktop-full.png) |
+| Hauptseite, Handy | [Bild](review/de-phone-full.png) | [Bild](review/en-phone-full.png) |
 | Einstieg | [Desktop](review/de-desktop-opening.png) · [Handy](review/de-phone-opening.png) | — |
 | Kontakt | [Desktop](review/de-desktop-contact.png) · [Handy](review/de-phone-contact.png) | — |
-
-Die bestehenden Affiliate-Bilder unter `review/*-affiliates-*` dokumentieren
-den unveränderten LinkHub aus PR #68.
+| Affiliates, Desktop | [Bild](review/de-affiliates-desktop-full.png) | [Bild](review/en-affiliates-desktop-full.png) |
+| Affiliates, Handy | [Bild](review/de-affiliates-phone-full.png) | [Bild](review/en-affiliates-phone-full.png) |
 
 ## Prüfung
 
-- Produktionsbuild, JavaScript-Syntax und `git diff --check` erfolgreich.
-- **27 vorhandene Browsertests bestanden, 1 planmäßig übersprungen**: Lesbarkeit,
-  Metadaten, kein horizontaler Überlauf, DE/EN ohne JavaScript, Mobilmenü und Fokus,
-  unveränderte Berufsbezeichnung, reduzierte Bewegung, Affiliate-Links und Bilder
-  sowie aktuelle Desktop-/Handy-Screenshots. Der übersprungene Fall ist das
-  Mobilmenü im Desktoplayout.
-- Zusätzliche DOM-Messung beider Homepages bei **320, 360, 390, 600, 601, 768,
-  1024 und 1440 Pixeln**: genau ein Live-Button im Hero, beide Überschrift-Phrasen
-  jeweils in einer Zeile, kein horizontaler Überlauf und der Anfragebutton im
-  ersten Bildschirm bei 900 Pixeln Höhe. Messwerte: [hero-layout.json](review/hero-layout.json).
-- Prüfung mit 200 % Root-Schriftgröße in beiden Sprachen bei 320, 390, 768 und
-  1440 Pixeln: natürliche Umbrüche halten den Hero-Text in seinen Spalten.
+- Produktionsbuild, Syntax und `git diff --check` erfolgreich.
+- 29 vorhandene Desktop-/Handy-Browserfälle bestanden; ein planmäßiger Skip
+  für das Mobilmenü im Desktoplayout. Nach den letzten Korrekturen bestanden
+  acht gezielte Fälle für Affiliate-Darstellung, fehlende Seiten, Metadaten und
+  Screenshots; die beiden Screenshot-Serien wurden danach für vollständig
+  geladene Footer-Logos erneut aufgenommen.
+- 14 axe-core-Prüfungen: sieben Routen bei 390 und 1440 Pixeln, einschließlich
+  echter 404-Seite. Keine automatisch erkannten WCAG-2-A/AA-/2.1-AA-Verstöße,
+  Browserfehler oder horizontalen Überläufe. Nachweise:
+  [accessibility.json](review/accessibility.json).
+- Weitere Layoutmessungen bei 320 und 768 Pixeln: Logos geladen, vollständige
+  Wortmarken im Verhältnis 2:1, weiterhin ein Live-Button. Sichtprüfung zusätzlich
+  bei 390 und 1440 Pixeln. [logo-layout.json](review/logo-layout.json).
+- Beide Hero-Überschriften bleiben bei acht Bildschirmbreiten zwischen 320 und
+  1440 Pixeln in ihren vorgesehenen Zeilen. [hero-layout.json](review/hero-layout.json).
+- Der erste Affiliate-Partner ist bei 320×844 und 390×844 im ersten Bildschirm
+  vollständig sichtbar. Der korrigierte 404-Button hat 12,29:1 Textkontrast.
+- Der ausgelieferte Logo-Asset und `uploads/logo.png` sind bytegleich:
+  SHA-256 `75c04da923d22a73f6199538834b61cef7c9f311e2ff5d9c2708bcae984b823c`.
 
-Die Auswahl prüft die geänderten Texte und die Darstellung. Formular- und
-Videologik wurden nicht verändert; deren umfassendere Prüfungen stammen aus
-PR #68. `review/accessibility.json` und `review/performance.json` sind frühere
-Messungen und keine erneuten Audits dieser Textfassung. Externe FormSubmit-
-Anfragen wurden blockiert; es wurden keine echten Anfragen oder Spenden gesendet.
+Automatische Kontrastprüfungen können geschichtete Verläufe nicht vollständig
+bewerten; diese Ansichten wurden zusätzlich visuell geprüft. Die bisherigen
+manuellen Prüfpunkte zu Videountertiteln bleiben bestehen. Der ursprüngliche
+PNG-Asset hat rund 1,57 MB und wird als gemeinsamer, gecachter Vite-Asset genutzt.
+Es gibt keine neue Geschwindigkeitsmessung; `review/performance.json` bleibt
+ein älterer Messstand. FormSubmit-Anfragen wurden in Browsertests blockiert.
 
-Die Änderung ist zur Prüfung vorbereitet. Keine Zusammenführung nach `main`
-und keine manuell ausgelöste Produktionsveröffentlichung.
+Vorbereitet als Review-Entwurf. Keine Zusammenführung nach `main` und keine
+manuell ausgelöste Produktionsveröffentlichung.

@@ -1,16 +1,16 @@
 /* Instagram link-in-bio page: compact, touch-friendly and independent of the homepage layout. */
 body.linkhub-page {
-  --hub-edge: rgba(234, 193, 149, .19);
-  --hub-quiet: #cdbdb8;
+  --hub-edge: rgba(239, 209, 138, .24);
+  --hub-quiet: var(--muted);
   width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   background:
-    radial-gradient(ellipse at 15% 12%, #67203366, transparent 45%),
-    radial-gradient(ellipse at 90% 48%, #48223940, transparent 44%),
-    linear-gradient(160deg, #190d14, #110b10 55%, #24101a);
-  color: #fff2e3;
+    radial-gradient(ellipse at 15% 12%, #94102766, transparent 45%),
+    radial-gradient(ellipse at 90% 48%, #790b2040, transparent 44%),
+    linear-gradient(160deg, #2b0009, #200006 55%, #460715);
+  color: var(--ink);
   font-size: 16px;
 }
 .linkhub-page .linkhub-topbar,
@@ -38,17 +38,17 @@ body.linkhub-page {
 .linkhub-page .linkhub-back .linkhub-icon { width: 19px; height: 19px; }
 .linkhub-page .language-links { gap: 4px; }
 .linkhub-page .language-links a { min-width: 44px; min-height: 44px; }
-.linkhub-page .language-links > span { color: #80666c; font-size: .75rem; }
+.linkhub-page .language-links > span { color: #b49068; font-size: .75rem; }
 .linkhub-page .linkhub-shell { padding: 0; }
 .linkhub-page .linkhub-profile {
   overflow: hidden;
   margin-bottom: 29px;
   border: 1px solid var(--hub-edge);
   border-radius: 26px;
-  background: linear-gradient(180deg, #3b1a26b3, #28151d66 60%, #28151d00);
+  background: linear-gradient(180deg, #640b1eb3, #40061266 60%, #40061200);
   box-shadow: 0 22px 70px #0002;
 }
-.linkhub-page .linkhub-cover { background: #101819; }
+.linkhub-page .linkhub-cover { background: #2a0008; }
 .linkhub-page .linkhub-cover img {
   display: block;
   width: 100%;
@@ -71,13 +71,13 @@ body.linkhub-page {
   margin-bottom: 19px;
   object-fit: cover;
   object-position: 50% 29%;
-  border: 4px solid #2b151f;
+  border: 4px solid #4a0715;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px #edcc9d99, 0 8px 22px #0005;
+  box-shadow: 0 0 0 1px #efd18a99, 0 8px 22px #0005;
 }
 .linkhub-page .linkhub-eyebrow {
   margin: 0 0 9px;
-  color: #eac590;
+  color: #efd18a;
   font-size: .64rem;
   font-weight: 650;
   letter-spacing: .15em;
@@ -94,7 +94,7 @@ body.linkhub-page {
 }
 .linkhub-page .linkhub-occupation {
   margin: 0 0 12px;
-  color: #f0d6b1;
+  color: #f3ddb0;
   font-size: .78rem;
   line-height: 1.7;
 }
@@ -123,7 +123,7 @@ body.linkhub-page {
   letter-spacing: 0;
 }
 .linkhub-page .linkhub-ad-label {
-  color: #cdbbb0;
+  color: #ddc9b8;
   font-size: .61rem;
   line-height: 1.6;
   letter-spacing: .05em;
@@ -137,7 +137,7 @@ body.linkhub-page {
   overflow: hidden;
   border: 1px solid var(--hub-edge);
   border-radius: 20px;
-  background: linear-gradient(125deg, #422432, #2d1924);
+  background: linear-gradient(125deg, #620b1f, #3d0612);
   color: inherit;
   text-decoration: none;
   box-shadow: 0 8px 22px #0002;
@@ -181,7 +181,7 @@ body.linkhub-page {
   align-items: center;
   gap: 7px;
   padding-top: 7px;
-  color: #edce9f;
+  color: #efd18a;
   font-size: .73rem;
   font-weight: 600;
   line-height: 1.5;
@@ -207,7 +207,7 @@ body.linkhub-page {
   padding: 16px 20px;
   border: 1px solid var(--hub-edge);
   border-radius: 18px;
-  background: linear-gradient(110deg, #4526328c, #2c1a2480);
+  background: linear-gradient(110deg, #640b1e8c, #3d061280);
   color: inherit;
   text-decoration: none;
   transition: transform 250ms ease, border-color 250ms ease, background-color 250ms ease;
@@ -218,29 +218,29 @@ body.linkhub-page {
   flex: 0 0 42px;
   width: 42px;
   height: 42px;
-  border: 1px solid #e5c19024;
+  border: 1px solid #efd18a24;
   border-radius: 13px;
-  background: #f3ce9910;
-  color: #e5c190;
+  background: #efd18a10;
+  color: #efd18a;
 }
 .linkhub-page .linkhub-button--instagram .linkhub-button-icon { background: linear-gradient(35deg, #edb56b24, #c44b8129 60%, #7866c82b); color: #f2bfdb; }
 .linkhub-page .linkhub-button--paypal .linkhub-button-icon { background: #549bc421; color: #93cbe9; }
 .linkhub-page .linkhub-button-copy { flex: 1; min-width: 0; }
 .linkhub-page .linkhub-button strong { display: block; font-size: .96rem; font-weight: 600; line-height: 1.5; }
 .linkhub-page .linkhub-button small { display: block; margin-top: 2px; color: var(--hub-quiet); font-size: .72rem; line-height: 1.5; overflow-wrap: anywhere; }
-.linkhub-page .linkhub-link-arrow { flex: 0 0 20px; width: 20px; height: 20px; color: #dbbc95; transition: transform 250ms ease; }
-.linkhub-page .linkhub-disclosure { margin: 24px 10px 0; color: #b8a5a4; font-size: .7rem; line-height: 1.8; text-align: center; }
-.linkhub-page .linkhub-footer { padding: 25px 10px 34px; color: #b8a5a4; text-align: center; }
+.linkhub-page .linkhub-link-arrow { flex: 0 0 20px; width: 20px; height: 20px; color: #efd18a; transition: transform 250ms ease; }
+.linkhub-page .linkhub-disclosure { margin: 24px 10px 0; color: #cfbaa5; font-size: .7rem; line-height: 1.8; text-align: center; }
+.linkhub-page .linkhub-footer { padding: 25px 10px 34px; color: #cfbaa5; text-align: center; }
 .linkhub-page .linkhub-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 22px; }
 .linkhub-page .linkhub-footer a { display: inline-flex; align-items: center; min-height: 44px; font-size: .73rem; text-decoration: none; }
 .linkhub-page .linkhub-footer p { margin: 3px 0 0; font-size: .66rem; }
-.linkhub-page a:focus-visible { outline: 3px solid #f2d3a5; outline-offset: 5px; }
+.linkhub-page a:focus-visible { outline: 3px solid #fff0c8; outline-offset: 5px; }
 @media (hover: hover) and (pointer: fine) {
   .linkhub-page .linkhub-partner:hover,
-  .linkhub-page .linkhub-button:hover { transform: translateY(-3px); border-color: #e7c28b88; box-shadow: 0 14px 32px #0003; }
+  .linkhub-page .linkhub-button:hover { transform: translateY(-3px); border-color: #efd18a88; box-shadow: 0 14px 32px #0003; }
   .linkhub-page .linkhub-button:hover .linkhub-link-arrow { transform: translate(2px, -2px); }
   .linkhub-page .linkhub-back:hover,
-  .linkhub-page .linkhub-footer a:hover { color: #f2d3a5; }
+  .linkhub-page .linkhub-footer a:hover { color: #fff0c8; }
 }
 .linkhub-page .linkhub-button:active,
 .linkhub-page .linkhub-partner:active { transform: scale(.99); }
