@@ -1,74 +1,74 @@
-# Neues Logo und Bordeaux-Gold-Gestaltung
+# Ganzes Logo im Einstieg und JS-Favicon
 
-Stand: 29. Oktober 2026. Branch: `feat/logo-and-burgundy-brand`.
-Basis ist der aktuelle Hauptbranch einschließlich des Logo-Uploads `9a74252`.
+Stand: 29. Oktober 2026. Branch: `feat/hero-logo-and-favicon`.
+Basis ist der veröffentlichte Stand nach PR #70.
 
 ## Umsetzung
 
-Das Original liegt unter [`uploads/logo.png`](../uploads/logo.png) und bleibt
-unverändert. Die Navigation zeigt einen CSS-Ausschnitt mit dem echten
-JS-Monogramm neben dem lesbaren Künstlernamen. Fußzeilen und Affiliate-Profil
-zeigen die vollständige Wortmarke im Originalverhältnis 2:1. Das Porträt steht
-unterhalb des Affiliate-Logos, damit es keine Schrift überdeckt.
+Das vollständige Original-Logo steht jetzt direkt über der Überschrift auf der
+deutschen und englischen Homepage. Auf dem Desktop sitzt es in der linken
+Spalte neben dem Porträt, auf dem Handy über beiden Spalten. Die Wortmarke bleibt
+im Verhältnis 2:1 vollständig sichtbar. Angepasste Abstände, Schriftgrößen und
+Porträthöhen lassen weiterhin Platz für Berufsbezeichnung, Angebot und Aktionen.
 
-Hintergründe, Karten, Navigation, Formular, Fußzeilen und Hover-Zustände greifen
-die Farben des Logos auf: tiefes Bordeaux (`#240007`), warmes Gold (`#efd18a`)
-und Elfenbein (`#fff5df`). Die Browser-Themenfarbe ist ebenfalls Bordeaux.
-Die Bilder und Plattformfarben der Partner bleiben erhalten.
+Der kleine separate Slogan-Text entfällt, da „The Healing Shadow“ bereits im
+Logo steht. Der große Logoblock in der Homepage-Fußzeile ist durch den kompakten
+Künstlernamen ersetzt. Die Überschrift bleibt als Text erhalten, ebenso die
+exakte Berufsbezeichnung und ein einzelner Live-Button im Einstieg. Auf der
+Affiliate-Seite stand das ganze Logo bereits oben; deren Darstellung bleibt.
 
-Die bestehende responsive Anordnung, Animationen, Texte, Berufsbezeichnung,
-Anfragefunktionen und Affiliate-Ziele bleiben bestehen. Der Einstieg enthält
-weiterhin genau einen Live-Button. Die Rechtstexte wurden nicht geändert;
-auf diesen Seiten wurden nur Logo, Stylesheet und Themenfarbe angepasst.
+Browser-Tab und Handy-Lesezeichen verwenden denselben JS-Ausschnitt wie die
+Navigation. Der Ausschnitt wurde rechts geringfügig enger gefasst, damit kein
+Fragment der benachbarten Wortmarke ins Icon gerät. Das Monogramm selbst bleibt
+vollständig und unverändert. Die Dateien sind:
 
-Der 404-Rückweg hatte durch eine allgemeine Textlink-Regel Gold auf Gold.
-Buttons sind nun von dieser Regel ausgenommen, sodass ihre Beschriftung ihren
-vorgesehenen dunklen Kontrast behält.
+- `public/favicon.ico`: Größen 16, 32 und 48 Pixel;
+- `public/favicon-32.png` und `public/favicon-48.png`;
+- `public/apple-touch-icon.png`: 180 Pixel.
+
+Alle sieben HTML-Seiten verlinken diese Icons. `scripts/render-icons.cjs`
+erzeugt sie reproduzierbar aus dem bestehenden Navigationsausschnitt mit dem
+bereits installierten Chromium. Der reguläre Build benötigt dafür keinen
+Browser und keine neue Abhängigkeit. Die Originaldatei `uploads/logo.png`
+ist unverändert.
 
 ## Ansichten
 
-Alle unten verlinkten Homepage- und Affiliate-Bilder wurden für diese Fassung
-neu aufgenommen: Desktop 1440×1100, Handy 412×839 CSS-Pixel. Für Ganzseitenbilder
-werden auch verzögert geladene Logos vorab dekodiert. Kontakt-Detailbilder
-lassen nur im Bildausschnitt die feststehende Navigation und den Sprunglink weg.
+Neue Homepage-Aufnahmen: Desktop 1440×1100, Handy 412×839 CSS-Pixel.
+Kontakt-Detailbilder lassen ausschließlich für den Bildausschnitt Navigation
+und Sprunglink weg. Die bestehenden Affiliate-Bilder dokumentieren das
+unveränderte Layout aus PR #70.
 
 | Ansicht | Deutsch | Englisch |
 | --- | --- | --- |
-| Hauptseite, Desktop | [Bild](review/de-desktop-full.png) | [Bild](review/en-desktop-full.png) |
-| Hauptseite, Handy | [Bild](review/de-phone-full.png) | [Bild](review/en-phone-full.png) |
+| Homepage, Desktop | [Bild](review/de-desktop-full.png) | [Bild](review/en-desktop-full.png) |
+| Homepage, Handy | [Bild](review/de-phone-full.png) | [Bild](review/en-phone-full.png) |
 | Einstieg | [Desktop](review/de-desktop-opening.png) · [Handy](review/de-phone-opening.png) | — |
 | Kontakt | [Desktop](review/de-desktop-contact.png) · [Handy](review/de-phone-contact.png) | — |
-| Affiliates, Desktop | [Bild](review/de-affiliates-desktop-full.png) | [Bild](review/en-affiliates-desktop-full.png) |
-| Affiliates, Handy | [Bild](review/de-affiliates-phone-full.png) | [Bild](review/en-affiliates-phone-full.png) |
 
 ## Prüfung
 
 - Produktionsbuild, Syntax und `git diff --check` erfolgreich.
-- 29 vorhandene Desktop-/Handy-Browserfälle bestanden; ein planmäßiger Skip
-  für das Mobilmenü im Desktoplayout. Nach den letzten Korrekturen bestanden
-  acht gezielte Fälle für Affiliate-Darstellung, fehlende Seiten, Metadaten und
-  Screenshots; die beiden Screenshot-Serien wurden danach für vollständig
-  geladene Footer-Logos erneut aufgenommen.
-- 14 axe-core-Prüfungen: sieben Routen bei 390 und 1440 Pixeln, einschließlich
-  echter 404-Seite. Keine automatisch erkannten WCAG-2-A/AA-/2.1-AA-Verstöße,
-  Browserfehler oder horizontalen Überläufe. Nachweise:
-  [accessibility.json](review/accessibility.json).
-- Weitere Layoutmessungen bei 320 und 768 Pixeln: Logos geladen, vollständige
-  Wortmarken im Verhältnis 2:1, weiterhin ein Live-Button. Sichtprüfung zusätzlich
-  bei 390 und 1440 Pixeln. [logo-layout.json](review/logo-layout.json).
-- Beide Hero-Überschriften bleiben bei acht Bildschirmbreiten zwischen 320 und
-  1440 Pixeln in ihren vorgesehenen Zeilen. [hero-layout.json](review/hero-layout.json).
-- Der erste Affiliate-Partner ist bei 320×844 und 390×844 im ersten Bildschirm
-  vollständig sichtbar. Der korrigierte 404-Button hat 12,29:1 Textkontrast.
-- Der ausgelieferte Logo-Asset und `uploads/logo.png` sind bytegleich:
-  SHA-256 `75c04da923d22a73f6199538834b61cef7c9f311e2ff5d9c2708bcae984b823c`.
+- 27 vorhandene Desktop-/Handy-Browserfälle bestanden; ein planmäßiger Skip
+  für das Mobilmenü im Desktoplayout. Geprüft wurden Lesbarkeit, Metadaten,
+  kein horizontaler Überlauf, Nutzung ohne JavaScript, Navigation und Fokus,
+  Berufsbezeichnung, reduzierte Bewegung sowie Screenshots.
+- 16 zusätzliche Layoutfälle: beide Homepages bei 320, 360, 390, 600, 601, 768,
+  1024 und 1440 Pixeln. Das vollständige Logo steht über der Überschrift, bleibt
+  im ersten Bildschirm und ist unbeschnitten. Der Anfragebutton bleibt bei
+  844 Pixeln Höhe sichtbar; beide Überschrift-Phrasen bleiben jeweils einzeilig.
+- Auf sieben Routen einschließlich echter 404-Seite sind alle vier Icon-Links
+  vorhanden. Dateien antworten mit HTTP 200 und einem passenden Bild-MIME-Typ.
+  PNG-Abmessungen und die drei Größen im ICO-Verzeichnis sind geprüft.
+- Favicon und Monogramm wurden visuell auf vollständige Buchstaben und einen
+  sauberen Ausschnitt geprüft. Das Original-Logo behält SHA-256
+  `75c04da923d22a73f6199538834b61cef7c9f311e2ff5d9c2708bcae984b823c`.
 
-Automatische Kontrastprüfungen können geschichtete Verläufe nicht vollständig
-bewerten; diese Ansichten wurden zusätzlich visuell geprüft. Die bisherigen
-manuellen Prüfpunkte zu Videountertiteln bleiben bestehen. Der ursprüngliche
-PNG-Asset hat rund 1,57 MB und wird als gemeinsamer, gecachter Vite-Asset genutzt.
-Es gibt keine neue Geschwindigkeitsmessung; `review/performance.json` bleibt
-ein älterer Messstand. FormSubmit-Anfragen wurden in Browsertests blockiert.
+Aktuelle Messdaten: [hero-favicon.json](review/hero-favicon.json).
+Die älteren Dateien `accessibility.json`, `hero-layout.json`, `logo-layout.json`
+und `performance.json` dokumentieren frühere Stände, keine erneuten Audits
+oder Layoutmessungen dieser Fassung. Externe FormSubmit-Anfragen waren in den
+Browsertests blockiert.
 
-Vorbereitet als Review-Entwurf. Keine Zusammenführung nach `main` und keine
-manuell ausgelöste Produktionsveröffentlichung.
+Vorbereitet als Entwurf. Keine Zusammenführung nach `main` und keine manuell
+ausgelöste Produktionsveröffentlichung.

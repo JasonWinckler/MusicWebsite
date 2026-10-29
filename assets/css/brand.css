@@ -5,17 +5,17 @@
   display: block;
   flex: 0 0 auto;
   width: 42px;
-  aspect-ratio: 470 / 510;
+  aspect-ratio: 460 / 510;
   overflow: hidden;
   border-radius: 10px;
   background: #40000b;
 }
-/* The source is 1774 × 887; this window shows x=105–575, y=175–685. */
+/* The source is 1774 × 887; this window shows x=105–565, y=175–685. */
 .brand-symbol img {
   position: absolute;
-  left: -22.340426%;
+  left: -22.826087%;
   top: -34.313725%;
-  width: 377.446809%;
+  width: 385.652174%;
   max-width: none;
   height: auto;
 }

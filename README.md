@@ -66,11 +66,19 @@ the enquiry action; the portrait has no duplicate action overlay.
 
 The original brand artwork is [`uploads/logo.png`](uploads/logo.png), supplied
 by the owner. `scripts/brand.cjs` renders it and `assets/css/brand.css` handles
-its display: a CSS window onto the real JS monogram in compact navigation, and
-the complete 2:1 artwork in footers and the affiliate cover. The image itself is
-unchanged. Keep the wordmark uncropped and the profile portrait below it.
+its display: a CSS window onto the real JS monogram in compact navigation.
+The complete 2:1 artwork sits above the homepage headline and in the affiliate
+cover; the homepage footer uses a compact artist-name link. The original image
+is unchanged. Keep the full wordmark uncropped at every breakpoint.
 Shared colors in `site.css` use deep burgundy (`#240007`), warm gold (`#efd18a`)
 and ivory (`#fff5df`); the browser theme color matches the burgundy base.
+
+Favicons in `public/` package that same navigation monogram: 16/32/48 px in
+`favicon.ico`, 32/48 px PNGs, and a 180 px Apple touch icon. `iconLinks()` in
+`scripts/brand.cjs` supplies the head links for generated pages; legal pages
+carry the same static links. To regenerate after a logo/crop change, run
+`node scripts/render-icons.cjs` with Playwright Chromium installed. This explicit
+asset task is not part of the production build and adds no runtime dependency.
 
 `npm run generate` writes the main and secondary HTML. Both `npm run dev` and
 `npm run build` run it automatically. After editing content or templates while a

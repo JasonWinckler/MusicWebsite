@@ -1,0 +1,407 @@
+{
+  "viewports": [
+    {
+      "language": "de",
+      "width": 320,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 94,
+        "width": 286,
+        "height": 143
+      },
+      "primaryButtonBottom": 593,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 360,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 96.359375,
+        "width": 326,
+        "height": 163
+      },
+      "primaryButtonBottom": 604,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 390,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 99.359375,
+        "width": 352,
+        "height": 176
+      },
+      "primaryButtonBottom": 646,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 600,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 99.359375,
+        "width": 418,
+        "height": 209
+      },
+      "primaryButtonBottom": 701,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 601,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 117.5625,
+        "width": 274.5625,
+        "height": 137.28125
+      },
+      "primaryButtonBottom": 571,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 768,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 117.5625,
+        "width": 338,
+        "height": 169
+      },
+      "primaryButtonBottom": 580,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1024,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 125,
+        "width": 338,
+        "height": 169
+      },
+      "primaryButtonBottom": 625,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1440,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 143.71875,
+        "width": 378,
+        "height": 189
+      },
+      "primaryButtonBottom": 711,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 320,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 94,
+        "width": 286,
+        "height": 143
+      },
+      "primaryButtonBottom": 569,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 360,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 96.359375,
+        "width": 326,
+        "height": 163
+      },
+      "primaryButtonBottom": 604,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 99.359375,
+        "width": 352,
+        "height": 176
+      },
+      "primaryButtonBottom": 646,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 600,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 99.359375,
+        "width": 418,
+        "height": 209
+      },
+      "primaryButtonBottom": 701,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 601,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 117.5625,
+        "width": 274.5625,
+        "height": 137.28125
+      },
+      "primaryButtonBottom": 571,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 768,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 117.5625,
+        "width": 338,
+        "height": 169
+      },
+      "primaryButtonBottom": 580,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1024,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 125,
+        "width": 338,
+        "height": 169
+      },
+      "primaryButtonBottom": 625,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1440,
+      "logoLoaded": true,
+      "logoRatio": 2,
+      "logoUncropped": true,
+      "logoInOpening": true,
+      "logoBeforeHeading": true,
+      "logoBounds": {
+        "top": 143.71875,
+        "width": 378,
+        "height": 189
+      },
+      "primaryButtonBottom": 711,
+      "primaryButtonVisible": true,
+      "footerLogoCount": 0,
+      "liveButtons": 1,
+      "overflow": false,
+      "titleRows": [
+        1,
+        1
+      ]
+    }
+  ],
+  "iconRoutes": [
+    "/",
+    "/en/",
+    "/affiliates/",
+    "/en/affiliates/",
+    "/impressum/",
+    "/datenschutz/",
+    "/does-not-exist/"
+  ],
+  "files": [
+    {
+      "path": "/favicon.ico",
+      "bytes": 7297,
+      "type": "image/vnd.microsoft.icon",
+      "size": null
+    },
+    {
+      "path": "/favicon-32.png",
+      "bytes": 2239,
+      "type": "image/png",
+      "size": 32
+    },
+    {
+      "path": "/favicon-48.png",
+      "bytes": 4282,
+      "type": "image/png",
+      "size": 48
+    },
+    {
+      "path": "/apple-touch-icon.png",
+      "bytes": 40067,
+      "type": "image/png",
+      "size": 180
+    }
+  ]
+}
