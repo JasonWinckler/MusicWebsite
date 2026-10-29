@@ -72,7 +72,7 @@ Falls Sie berechtigt sind:
 
 Eine sachliche Beschreibung aus den bestätigten Angaben:
 
-> Jason Shadow ist Bariton-Sänger, Eventmoderator und Sprecher aus Rheine in Nordrhein-Westfalen. Anfragen sind für Live-Gesang und Moderation bei Firmenveranstaltungen und privaten Feiern sowie für Sprecherproduktionen möglich. Inhalt und Rahmenbedingungen werden individuell besprochen.
+> Jason Shadow – Sänger · Sprecher · Moderator aus Rheine in Nordrhein-Westfalen. Buchbar für B2B-Veranstaltungen wie Galas, Firmenjubiläen und Events in Restaurants sowie für private Feiern wie Hochzeiten. Live-Gesang, Eventmoderation und Sprecherproduktionen werden passend zum Anlass besprochen.
 
 Dieses Profil wurde während der Websitearbeit weder erstellt noch veröffentlicht. Verwenden Sie in echten Profilen möglichst denselben Künstlernamen, dieselbe Website und dieselbe öffentliche Kontaktadresse. Bei tatsächlichen Veranstaltern oder Spielstätten können Sie nach einem passenden Auftritt um einen sachlichen Website-Link bitten. Es wurden keine Orte kontaktiert und keine Bewertungen angefragt.
 

@@ -13,7 +13,7 @@ function render(lang) {
   const portrait = site.media.portrait, video = site.media.performance;
   const languages = `<nav class="language-links" aria-label="${e(t.languageLabel)}"><a href="/" hreflang="de" lang="de"${lang === 'de' ? ' aria-current="page"' : ''}>DE</a><span aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="page"' : ''}>EN</a></nav>`;
   const schema = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'Person', '@id': `${site.url}/#artist`, name: site.name, url: site.url, image: site.url + portrait.src, description: t.footer.description, homeLocation: { '@type': 'City', name: site.location } },
+    { '@type': 'Person', '@id': `${site.url}/#artist`, name: site.name, jobTitle: t.occupation, url: site.url, image: site.url + portrait.src, description: t.footer.description, homeLocation: { '@type': 'City', name: site.location } },
     { '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: `${site.url}/`, inLanguage: ['de', 'en'], about: { '@id': `${site.url}/#artist` } },
     ...t.services.items.map(item => ({ '@type': 'Service', name: item.title, description: item.text, provider: { '@id': `${site.url}/#artist` }, url: `${site.url}${path}#leistungen` })),
   ] };

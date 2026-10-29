@@ -1,7 +1,9 @@
 # Jason Shadow — MusicWebsite
 
-A static, bilingual website for Jason Shadow’s live singing, event hosting and
-voice work, based in Rheine. German is the primary language; English has its own
+A static, bilingual website for Jason Shadow — Singer · Speaker · Moderator
+(Sänger · Sprecher · Moderator), based in Rheine. Bookable for B2B occasions
+including galas, company anniversaries and restaurant events, and private
+celebrations including weddings. German is the primary language; English has its own
 crawlable URLs. The music brand is separate from Shadow’s Temptation and The
 Order of Shadows. Do not introduce either brand’s private or adult content here.
 
@@ -42,7 +44,10 @@ redirect behaviour before an authorised release.
 | `/404.html` | Bilingual missing-page recovery | `scripts/secondary-pages.cjs` |
 
 Frequently edited offer copy, services and public contact configuration live in
-`content/site.cjs`. Main and affiliate HTML files are generated source artifacts;
+`content/site.cjs`. Keep the professional occupation exactly “Singer · Speaker ·
+Moderator” / “Sänger · Sprecher · Moderator”, in that order; the shared
+`occupation` values drive the visible identity and structured data. Main and
+affiliate HTML files are generated source artifacts;
 edit their content/template and regenerate rather than editing generated copy.
 Legal pages remain manually maintained source HTML. `assets/css/site.css` is the
 shared design. `src/main.js` enhances navigation, media and the enquiry form;
