@@ -1,0 +1,354 @@
+[
+  {
+    "language": "de",
+    "width": 320,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 511,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 360,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 487,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 390,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 512,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 600,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 572,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 601,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 490,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 768,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 475,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 1024,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 567,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "de",
+    "width": 1440,
+    "slogan": "The Healing Shadow",
+    "title": "Eine Stimme. Die berührt.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "Eine Stimme.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "Die berührt.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 675,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 487,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 360,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 487,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 512,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 600,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 572,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 601,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 490,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 475,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 1024,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 567,
+    "primaryButtonVisible": true
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "slogan": "The Healing Shadow",
+    "title": "A voice. That stays.",
+    "liveButtons": 1,
+    "overflow": false,
+    "lineBoxes": [
+      {
+        "text": "A voice.",
+        "rows": 1,
+        "withinViewport": true
+      },
+      {
+        "text": "That stays.",
+        "rows": 1,
+        "withinViewport": true
+      }
+    ],
+    "primaryButtonBottom": 675,
+    "primaryButtonVisible": true
+  }
+]
