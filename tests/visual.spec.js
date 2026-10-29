@@ -162,6 +162,7 @@ test('mobile disclosure navigation manages focus, Tab exit and Escape', async ({
   await menu.locator('a[href="#leistungen"]').click();
   await expect(menu).toBeHidden();
   await expect(page).toHaveURL(/#leistungen$/);
+  await expect(page.locator('#leistungen')).toBeFocused();
 });
 
 test('genuine performance loads and plays with byte ranges and no autoplay', async ({ page, request }) => {
@@ -240,8 +241,83 @@ test('affiliate relationships and images are clear; language links preserve the 
   await expect(page.locator('main')).toContainText(/affiliate/i);
 });
 
+for (const [path, language] of [['/affiliates/', 'de'], ['/en/affiliates/', 'en']]) {
+  test(`${language}: social linkhub works without JavaScript on narrow phones`, async ({ browser, baseURL }, testInfo) => {
+    const { isMobile, hasTouch, deviceScaleFactor, userAgent } = testInfo.project.use;
+    const context = await browser.newContext({ javaScriptEnabled: false, baseURL, isMobile, hasTouch, deviceScaleFactor, userAgent, viewport: { width: 390, height: 844 } });
+    const page = await context.newPage();
+    try {
+      for (const width of [320, 390]) {
+        await page.setViewportSize({ width, height: 844 });
+        await page.goto(path);
+        await expect(page.locator('h1')).toContainText('Jason Shadow');
+        await expect(page.locator('main')).toContainText(copy[language].occupation);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+        const partners = page.locator('a[rel~="sponsored"]');
+        await expect(partners).toHaveCount(2);
+        for (const partner of await partners.all()) {
+          const image = partner.locator('img');
+          await image.scrollIntoViewIfNeeded();
+          await expect.poll(() => image.evaluate(element => element.complete && element.naturalWidth > 0)).toBe(true);
+          expect(await image.evaluate(element => getComputedStyle(element).objectFit)).toBe('contain');
+          const box = await partner.boundingBox();
+          expect(box.width).toBeGreaterThanOrEqual(44);
+          expect(box.height).toBeGreaterThanOrEqual(44);
+          await partner.focus();
+          await expect(partner).toBeFocused();
+        }
+        const destinations = [
+          'https://www.instagram.com/jason.shadow_official/',
+          'https://www.paypal.com/donate/?hosted_button_id=6XPT97RRUBEA6',
+          language === 'de' ? '/' : '/en/',
+        ];
+        for (const href of destinations) {
+          const link = page.locator(`main a[href="${href}"]`).first();
+          await expect(link).toBeVisible();
+          const box = await link.boundingBox();
+          expect(box.width).toBeGreaterThanOrEqual(44);
+          expect(box.height).toBeGreaterThanOrEqual(44);
+          await link.focus();
+          await expect(link).toBeFocused();
+        }
+      }
+    } finally { await context.close(); }
+  });
+}
+
+test('reduced motion leaves the homepage and social linkhub fully readable', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const path of ['/', '/affiliates/']) {
+    await page.goto(path);
+    expect(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(true);
+    await expect(page.locator('h1')).toBeVisible();
+    expect(await page.locator('[data-reveal]').count()).toBeGreaterThan(0);
+    await page.locator('main').evaluate(element => element.lastElementChild.scrollIntoView());
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
+    expect(await page.locator('[data-reveal]').evaluateAll(elements => elements.every(element => {
+      const style = getComputedStyle(element);
+      return Number(style.opacity) === 1 && style.visibility !== 'hidden' && style.display !== 'none';
+    }))).toBe(true);
+  }
+});
+
+test('occupation remains exact without repeated location labels', async ({ page }) => {
+  for (const [path, language] of [['/', 'de'], ['/en/', 'en']]) {
+    await page.goto(path);
+    await expect(page.locator('.hero')).toContainText(copy[language].occupation);
+    const branding = await page.locator('.hero, #kontakt, .site-footer').allInnerTexts();
+    expect(branding.join(' ')).not.toMatch(/Rheine|based in/i);
+    const mainText = await page.locator('main').textContent();
+    expect((mainText.match(/Rheine/gi) || []).length).toBeLessThanOrEqual(1);
+  }
+});
+
 test('labelled desktop and phone review screenshots', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === 'chromium-tablet', 'Phone and desktop screenshots cover the review deliverables.');
+  // The combined home/linkhub review creates eight images per device. Keep the
+  // capture budget separate from functional assertions and avoid oversized DPR PNGs.
+  test.setTimeout(60000);
   const device = testInfo.project.name === 'chromium-mobile' ? 'phone' : 'desktop';
   const directory = join(__dirname, '..', 'screenshots');
   await mkdir(directory, { recursive: true });
@@ -252,15 +328,27 @@ test('labelled desktop and phone review screenshots', async ({ page }, testInfo)
       await document.fonts.ready;
       await Promise.all([...document.images].filter(image => image.loading !== 'lazy').map(image => image.decode().catch(() => {})));
     });
-    await page.screenshot({ path: join(directory, `${language}-${device}-full.png`), fullPage: true });
+    await page.screenshot({ path: join(directory, `${language}-${device}-full.png`), fullPage: true, scale: 'css' });
     if (language === 'de') {
-      await page.screenshot({ path: join(directory, `de-${device}-opening.png`) });
+      await page.screenshot({ path: join(directory, `de-${device}-opening.png`), scale: 'css' });
       // Isolate this section after saving the unmodified page captures. Removing
       // fixed UI in this test page avoids overlays without injecting inline CSS
       // (which the site's Content Security Policy correctly blocks).
       await page.locator('.site-header, .skip-link').evaluateAll(elements => elements.forEach(element => element.remove()));
-      await page.locator('#kontakt').screenshot({ path: join(directory, `de-${device}-contact.png`) });
+      await page.locator('#kontakt').screenshot({ path: join(directory, `de-${device}-contact.png`), scale: 'css' });
     }
+  }
+  for (const [path, language] of [['/affiliates/', 'de'], ['/en/affiliates/', 'en']]) {
+    await page.goto(path);
+    // Decode all previews, including lazily loaded cards below the first screen.
+    await page.locator('main img').evaluateAll(async images => {
+      await Promise.all(images.map(async image => {
+        image.loading = 'eager';
+        await image.decode().catch(() => {});
+      }));
+    });
+    await page.screenshot({ path: join(directory, `${language}-affiliates-${device}-full.png`), fullPage: true, scale: 'css' });
+    await page.screenshot({ path: join(directory, `${language}-affiliates-${device}-opening.png`), scale: 'css' });
   }
 });
 

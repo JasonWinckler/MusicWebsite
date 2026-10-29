@@ -50,7 +50,12 @@ Moderator” / “Sänger · Sprecher · Moderator”, in that order; the shared
 affiliate HTML files are generated source artifacts;
 edit their content/template and regenerate rather than editing generated copy.
 Legal pages remain manually maintained source HTML. `assets/css/site.css` is the
-shared design. `src/main.js` enhances navigation, media and the enquiry form;
+shared foundation. `assets/css/home-refresh.css` defines the distinct desktop
+and phone homepage layouts; `assets/css/linkhub.css` defines the Instagram
+link-in-bio layout. Both are scoped to their page type. `src/motion.js` supplies
+one-time entrance animations through the Web Animations API: content is visible
+by default, keyboard focus cancels movement, and reduced-motion preferences
+disable/cancel animations. `src/main.js` enhances navigation, media and the enquiry form;
 headings, descriptions, contacts and language links work without JavaScript.
 
 `npm run generate` writes the main and secondary HTML. Both `npm run dev` and
@@ -75,7 +80,12 @@ Responsive portraits, the actual performance poster and the social-sharing
 image use existing material. Preserve originals. New media must have an
 accurate title/context and appropriate publication rights. Never invent reviews,
 credentials, repertoire, event experience, travel coverage or language fluency.
-Affiliate relationships are disclosed separately from customer references.
+Affiliate relationships are disclosed separately from customer references. The
+affiliate pages use the existing uploaded banner and partner previews, with
+image frames fitted to their original proportions, plus large native Instagram,
+website and PayPal links. Keep these touch-friendly links usable without JavaScript.
+Decorative location labels have been removed; the actual performance caption
+and required legal details retain their factual context.
 
 Useful existing media URLs redirect explicitly:
 

@@ -1,131 +1,119 @@
-# Website-Umbau zur Prüfung
+# Gestaltung und Affiliate-LinkHub zur Prüfung
 
-Stand: 29. Oktober 2026. Diese Fassung wurde auf dem Branch
-`fix/occupation-and-event-offering` als Korrektur des bereits zusammengeführten Umbaus vorbereitet. Die Produktionsseite und die
-Umgebungskonfiguration wurden nicht veröffentlicht oder umgestellt.
+Stand: 29. Oktober 2026. Branch: `feat/fluid-design-and-affiliate-linkhub`.
+Auf Basis des aktuellen Hauptbranches nach PR #67 vorbereitet. Keine
+Zusammenführung nach `main`, keine manuell ausgelöste Produktionsveröffentlichung
+und keine Änderung an DNS, E-Mail oder der Umgebungskonfiguration.
 
-## Was sich geändert hat
+## Gestaltung
 
-Die Website stellt Jason Shadow als „Sänger · Sprecher · Moderator“ bzw.
-„Singer · Speaker · Moderator“ aus Rheine vor. Er ist für B2B-Events wie Galas,
-Firmenjubiläen und Veranstaltungen in Restaurants sowie für private Feiern wie
-Hochzeiten buchbar. Die Angebote sind konkret beschrieben, ohne erfundene Erfahrung,
-VIP-Referenzen, Repertoire-, Reise- oder Verfügbarkeitszusagen. Deutsch steht
-unter `/`, Englisch unter `/en/`; beide Seiten enthalten die wichtigen Inhalte
-bereits im HTML. Ein echter KÖPI-Mitschnitt ersetzt leere Portfolio-Plätze,
-ein echtes Porträt ersetzt die Abhängigkeit von einem neuen Showreel.
+Die Hauptseite hat einen durchgehenden burgunderfarbenen Hintergrund mit weichen
+Lichtverläufen. Die harten Trennlinien zwischen den Abschnitten sind entfernt.
+Eine schwebende Navigation, warme Goldakzente, weichere Bildrahmen und kleinere
+zusammengehörige Inhaltsflächen verbinden die Abschnitte optisch.
 
-Das Weinrot-/Gold-Design führt zu einer kurzen Anfrage mit Name, E-Mail,
-gewünschter Leistung und Nachricht. Der bisherige FormSubmit-Empfänger bleibt
-erhalten. Ein Erfolgshinweis erscheint erst nach einer bestätigten Annahme des
-Dienstes; Fehler erhalten die Eingaben und bieten die öffentliche E-Mail als
-Alternative an. Budgetvorgaben, unvollständige News und der funktionslose
-Signature-Song-Player wurden entfernt.
+Desktop zeigt Angebot und Porträt in zwei großzügigen Spalten. Auf dem Handy
+steht das kompakte Porträt neben der Überschrift; die Anfrage-Buttons folgen
+über die volle Breite. Leistungen und Ablauf wechseln in eine vertikale
+Darstellung. Beide Layouts verwenden dieselben Inhalte und Sprach-URLs.
 
-Die statische Vite-/Cloudflare-Pages-Architektur bleibt erhalten. Canonicals,
-gegenseitige Sprachverweise, strukturierte Angaben zu Person/Website/Leistungen,
-Social-Metadaten, echte Sitemap, robots.txt und echte 404-Antworten sind ergänzt.
-Rechts- und Affiliate-Seiten bleiben erreichbar; Affiliate-Angebote werden
-ausdrücklich nicht als Kundenreferenzen dargestellt. Es gibt keine neuen
-kostenpflichtigen Dienste, kein Tracking und keine Datenbank.
+Dezente Einblendungen laufen einmalig beim Eintritt in den sichtbaren Bereich.
+Buttons, Navigation und Links reagieren weich auf Interaktion. Ohne JavaScript
+bleiben sämtliche Inhalte sichtbar. Die Einstellung „reduzierte Bewegung“
+unterbindet Animationen und beendet bereits laufende Animationen. Fokussierte
+Bedienelemente werden ebenfalls nicht weiterbewegt.
+
+Die Ortswiederholungen in Einstieg, Porträtbeschriftung, Kontaktbereich,
+Fußzeile und Metadaten sind entfernt. Der tatsächliche Ort des KÖPI-Mitschnitts
+steht einmal in dessen Beschreibung; bestehende Rechtsangaben bleiben erhalten.
+Die Berufsbezeichnung lautet weiterhin exakt **Sänger · Sprecher · Moderator**
+bzw. **Singer · Speaker · Moderator**. Die B2B- und privaten Veranstaltungsangebote
+einschließlich Galas, Firmenjubiläen, Restaurant-Events und Hochzeiten bleiben
+klar beschrieben.
+
+## Affiliate-Seite für Instagram-Besucher
+
+Die Seite ist wieder ein kompakter LinkHub mit dem vorhandenen Banner,
+Profilporträt und großen nativen Link-Buttons. Die ursprünglichen Corissia- und
+Waterdrop-Bilder werden vollständig in jeweils passenden Rahmen dargestellt.
+Instagram, Website und PayPal haben erkennbare Symbole und große Touchflächen.
+Die bestehende Linkadresse `/affiliates/` bleibt nutzbar, ebenso die englische
+Fassung `/en/affiliates/`.
+
+Partnerziele und PayPal-Empfänger wurden nicht geändert. Affiliate-Links bleiben
+als Werbung gekennzeichnet und sind keine Kundenreferenzen. Alle Links
+funktionieren ohne JavaScript; es wurden keine Käufe, Spenden oder externen
+Formularübermittlungen ausgelöst.
 
 ## Ansichten
 
-Die Bilder stammen aus Chromium: Desktop 1440×1100, Handy Pixel-7-Emulation
-412×839 CSS-Pixel. Die vollständigen Seiten und Einstiegsansichten sind
-unverändert aufgenommen. Die Kontakt-Detailbilder lassen nur die feststehende
-Navigation und den Sprunglink weg, damit diese beim Aufnehmen des gesamten
-Abschnitts nicht darüberliegen.
+Aufgenommen in Chromium bei 1440×1100 CSS-Pixeln auf Desktop und 412×839 in der
+Pixel-7-Emulation. Dateien werden in CSS-Pixeln gespeichert, damit sie auf dem
+Handy handhabbar bleiben. Kontakt-Detailaufnahmen lassen ausschließlich die
+feststehende Navigation und den Sprunglink weg, damit diese den Ausschnitt nicht
+überlagern; vollständige Seiten und Einstiege bleiben unverändert.
 
 | Ansicht | Deutsch | Englisch |
 | --- | --- | --- |
-| Desktop, Einstieg | [Screenshot](review/de-desktop-opening.png) | — |
-| Handy, Einstieg | [Screenshot](review/de-phone-opening.png) | — |
-| Desktop, vollständige Seite | [Screenshot](review/de-desktop-full.png) | [Screenshot](review/en-desktop-full.png) |
-| Handy, vollständige Seite | [Screenshot](review/de-phone-full.png) | [Screenshot](review/en-phone-full.png) |
-| Kontakt, Desktop | [Screenshot](review/de-desktop-contact.png) | — |
-| Kontakt, Handy | [Screenshot](review/de-phone-contact.png) | — |
+| Hauptseite, Desktop vollständig | [Bild](review/de-desktop-full.png) | [Bild](review/en-desktop-full.png) |
+| Hauptseite, Handy vollständig | [Bild](review/de-phone-full.png) | [Bild](review/en-phone-full.png) |
+| Hauptseite, Desktop-Einstieg | [Bild](review/de-desktop-opening.png) | — |
+| Hauptseite, Handy-Einstieg | [Bild](review/de-phone-opening.png) | — |
+| Kontakt, Desktop / Handy | [Desktop](review/de-desktop-contact.png) · [Handy](review/de-phone-contact.png) | — |
+| LinkHub, Desktop vollständig | [Bild](review/de-affiliates-desktop-full.png) | [Bild](review/en-affiliates-desktop-full.png) |
+| LinkHub, Handy vollständig | [Bild](review/de-affiliates-phone-full.png) | [Bild](review/en-affiliates-phone-full.png) |
+| LinkHub, Desktop-Einstieg | [Bild](review/de-affiliates-desktop-opening.png) | [Bild](review/en-affiliates-desktop-opening.png) |
+| LinkHub, Handy-Einstieg | [Bild](review/de-affiliates-phone-opening.png) | [Bild](review/en-affiliates-phone-opening.png) |
 
-![Desktop-Einstieg](review/de-desktop-opening.png)
+## Prüfung und Grenzen
 
-## Prüfung
+Der Produktionsbuild ist erfolgreich. Alle **74 funktionalen Browserfälle**
+bestanden; beide ausführbaren Screenshot-Fälle bestanden ebenfalls. Insgesamt
+sind **76 ausführbare Fälle erfolgreich geprüft, 2 planmäßig übersprungen**
+(Desktop benötigt kein Mobilmenü, zusätzliche Tablet-Screenshots sind nicht
+Teil der Review-Bilder).
 
-Die aktuelle Textkorrektur wurde mit Produktionsbuild sowie den bestehenden
-Seiten-, Layout-, Ohne-JavaScript- und Screenshot-Prüfungen kontrolliert:
-**26 bestanden, 1 beabsichtigte Screenshot-Auslassung, 0 Fehler**. Die exakte
-Berufsbezeichnung in Hero, Titel und Person-`jobTitle` sowie alle genannten
-Veranstaltungsbeispiele wurden zusätzlich im gebauten HTML beider Sprachen
-geprüft. Die Screenshots zeigen diesen korrigierten Stand.
+Der erste Handy-Screenshotlauf überschritt beim Erstellen der zusätzlichen
+LinkHub-Bilder sein Zeitlimit. Die Artefaktaufnahme wurde auf CSS-Pixel und ein
+passendes Zeitbudget umgestellt und gezielt erfolgreich wiederholt. Es wurden
+keine Funktionsprüfungen dafür abgeschaltet. Der ursprüngliche vollständige
+HTML-Bericht behält diesen diagnostizierten Aufnahmefehler; der anschließende
+Screenshotlauf ist separat dokumentiert.
 
-Beim ursprünglichen Umbau waren `npm run build` und der vollständige Lauf
-`CI=1 npm run test:browser -- --workers=2` waren erfolgreich:
-**64 bestanden, 2 beabsichtigt übersprungen, 0 Fehler** (52,9 Sekunden).
-Übersprungen wurden das ausschließlich mobile Menüszenario am Desktop und
-zusätzliche Tablet-Screenshots. Die Tablet-Funktionstests wurden ausgeführt.
+Geprüft wurden:
 
-Geprüft wurden insbesondere:
+- DE/EN, sechs öffentliche Seiten, Metadaten und echte 404-Antworten;
+- Formulareingaben, angenommene und abgelehnte Mock-Antworten, Netzwerkfehler
+  und Wiederholung ohne echte FormSubmit-Übermittlung;
+- Videowiedergabe, Bytebereiche und Fehleralternative;
+- Tastaturbedienung, Menüzustände und Fokusrückgabe;
+- LinkHub ohne JavaScript bei 320 und 390 Pixeln, vorhandene Bilder,
+  unbeschnittene Bilddarstellung, echte Linkziele und mindestens 44 Pixel große
+  Bedienelemente;
+- Animationen bei normaler Bewegungseinstellung und sofortiger Abbruch beim
+  Umschalten auf reduzierte Bewegung;
+- sichtbare Inhalte bei ausgeschaltetem JavaScript sowie reduzierte
+  Ortswiederholungen.
 
-- Alle sechs öffentlichen Seiten, DE/EN-Inhalte ohne JavaScript und die
-  Sprachwechsel zur entsprechenden Seite.
-- Formularvalidierung, Warten auf die Antwort, positive Annahme, negative
-  Dienstantwort, Wiederholung und Netzwerkfehler in beiden Sprachen. Sämtliche
-  FormSubmit-Aufrufe wurden abgefangen; es wurden keine echten Anfragen versandt.
-- Tastaturzugang, nicht fokussierbare geschlossene Menüpunkte, Escape und
-  Fokusrückgabe; kein horizontaler Überlauf in Desktop-, Handy- und Tablet-Tests.
-  Zusätzlich wurden alle sechs Seiten bei 320 Pixel Breite geprüft.
-- Wiedergabe des echten Videos, HTTP-Bytebereiche, kein Autoplay sowie sichtbare
-  Fehleralternative. Keine weitere Aufnahme läuft im Hintergrund.
-- Canonicals, Sprachverweise, Sitemap-XML, robots-MIME-Typ und tatsächliche
-  HTTP-404-Antworten für fehlende Seiten und Dateien. Der lokale Prüfserver
-  verwendet die gebauten Dateien und die CSP aus der Produktion.
-- Gestaltung bei 320, 390, 768 und 1440 Pixeln, geöffnetes Menü und Kontaktbereich.
+Hauptseite und LinkHub wurden zusätzlich visuell auf Handy und Desktop geprüft;
+die Hauptseite bei 320, 390, 768 und 1440 Pixeln. Kein horizontaler Überlauf,
+Anfrage-Button im ersten Bildschirm und vollständig sichtbare Partnerbilder.
 
-axe-core 4.11.0 fand auf allen sechs Seiten bei 390×844 Pixeln **keine automatisch
-erkannten Verstöße** der Regeln WCAG 2 A/AA und 2.1 AA. Das ist keine vollständige
-Zugänglichkeitszertifizierung. Manuell zu bewertende Hinweise betreffen unter
-anderem Videountertitel und einzelne Kontrast-/ARIA-Situationen. Die Darstellung
-und Tastaturbedienung wurden zusätzlich geprüft. Eine verifizierte Liedtext-
-Transkription liegt nicht vor; es wurden keine Untertitel erfunden.
+axe-core 4.11.0 fand auf den vier neu gestalteten DE/EN-Seiten bei 390×844 Pixeln
+keine automatisch erkannten Verstöße gegen die geprüften WCAG-2-A/AA- und
+2.1-AA-Regeln. Manuelle Prüfpunkte zu Kontrast und Videountertiteln bleiben
+ausgewiesen. Das ist keine vollständige Barrierefreiheitszertifizierung.
 [Prüfdaten](review/accessibility.json)
 
-## Gemessene Ladeeigenschaften
+Die Datei `review/performance.json` enthält historische Messungen des
+ursprünglichen Umbaus und ist keine neue Leistungsbewertung dieses Designs.
+E-Mail-Zustellung, Suchmaschinenindexierung und rechtliche Vollständigkeit
+werden durch diese Gestaltungstests nicht bestätigt.
 
-Messung des ursprünglichen Umbaus vor der Textkorrektur: ein einzelner lokaler
-Chromium-Aufruf je Gerät, neue Browserseite, ohne Netzwerk-
-oder CPU-Drosselung, nach 1,5 Sekunden Beobachtung. Die Werte sind keine
-Lighthouse-Scores, keine Mobilfunkmessung und keine Live-Core-Web-Vitals.
+## Pflege
 
-| Messung | Desktop | Pixel-7-Emulation |
-| --- | ---: | ---: |
-| First Contentful Paint | 192 ms | 144 ms |
-| Largest Contentful Paint | 192 ms | 144 ms |
-| Cumulative Layout Shift | 0 | 0 |
-| Anfänglich übertragene Daten | 160.714 Byte | 197.826 Byte |
-| Anfragen | 5 | 5 |
-| Videodownloads vor Wiedergabe | 0 | 0 |
-
-[Rohdaten und Viewports](review/performance.json). Das Porträt lädt je nach
-Bildschirm als WebP mit etwa 27–126 KB statt des 2,13-MB-Originals. Das Video
-bleibt H.264/AAC; bei der Optimierung wurden seine komprimierten Video- und
-Audioströme unverändert übernommen. Originaldateien bleiben im Repository.
-
-## Was noch der Inhaber prüft
-
-Die [Handy-Anleitung](OWNER-GUIDE.md) beschreibt Text-, Bild- und Videoänderungen,
-Search-Console-Inhaberschaft, Sitemap-Einreichung, URL-Prüfung und die sachliche
-Prüfung eines Google-Unternehmensprofils. Eine bisher unbestätigte Reiseabdeckung
-oder Auftrittssprache wird individuell besprochen und blockiert diese Fassung
-nicht.
-
-Echte E-Mail-Zustellung und gegebenenfalls FormSubmit-Aktivierung müssen im
-Inhaberpostfach geprüft werden. Die deutsche Rechtsinformation wurde technisch
-angepasst, nicht anwaltlich geprüft. Bei ausgeschaltetem JavaScript führt das
-Formular zum bestehenden FormSubmit-Dienst; dessen eigene Bestätigungsseite
-unterliegt nicht unserer Sprachsteuerung.
-
-Die bestehende Live-Seite antwortete bei `www.jason-shadow.com` mit HTTP 522.
-Außerdem ist neben Cloudflare Pages eine ältere GitHub-Pages-Konfiguration
-vorhanden. Diese Beobachtungen sind Betreiberpunkte vor einer späteren Freigabe;
-DNS, E-Mail, Konten und Hosting-Einstellungen wurden nicht geändert. Die
-Google-Indexierung und erreichbare Rankings sind nicht durch einen Build
-bestätigt oder garantiert.
+Texte, Berufsbezeichnung und Kontakt-/Mediendaten: `content/site.cjs`.
+Hauptseitenlayout: `assets/css/home-refresh.css`. LinkHub-Inhalte und Links:
+`scripts/secondary-pages.cjs`; Gestaltung: `assets/css/linkhub.css`.
+Gemeinsame Bewegungen: `src/motion.js`. Die [Handy-Anleitung](OWNER-GUIDE.md)
+beschreibt Änderungen ohne eigenen Computer.
