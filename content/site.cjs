@@ -23,8 +23,8 @@ module.exports = {
   },
   de: {
     occupation: occupation.de,
-    title: `Jason Shadow | ${occupation.de} aus Rheine`,
-    description: `Jason Shadow: ${occupation.de} aus Rheine. Buchbar für Galas, Firmenjubiläen, Restaurant-Events und private Feiern wie Hochzeiten.`,
+    title: `Jason Shadow | ${occupation.de}`,
+    description: `Jason Shadow: ${occupation.de}. Buchbar für Galas, Firmenjubiläen, Restaurant-Events und private Feiern wie Hochzeiten.`,
     nav: [
       { href: '#eindruck', label: 'Live-Eindruck' },
       { href: '#leistungen', label: 'Leistungen' },
@@ -39,14 +39,14 @@ module.exports = {
     cta: 'Auftritt anfragen',
     watch: 'Live-Eindruck ansehen',
     hero: {
-      eyebrow: 'Jason Shadow · Aus Rheine',
+      eyebrow: 'Live. Persönlich. Unverwechselbar.',
       title: 'Markante Stimme. Besondere Momente.',
       lead: occupation.de,
       detail: 'Buchbar für B2B-Events wie Galas, Firmenjubiläen und Veranstaltungen in Restaurants sowie für private Feiern wie Hochzeiten – und Ihren besonderen Anlass.',
     },
     performance: {
       eyebrow: 'Ein echter Einblick',
-      title: 'Live im KÖPI am Ring, Rheine.',
+      title: 'Live im KÖPI am Ring.',
       text: 'Lernen Sie meine Stimme dort kennen, wo sie wirken soll: bei einem Auftritt. Dieser Mitschnitt gibt Ihnen einen ersten Eindruck von meinem Gesang.',
       caption: 'Jason Shadow · Gesangsauftritt im KÖPI am Ring in Rheine',
       fallback: 'Das Video lässt sich hier gerade nicht abspielen. Sie können die Videodatei direkt öffnen oder mir per E-Mail schreiben.',
@@ -79,7 +79,7 @@ module.exports = {
       eyebrow: 'Die Person hinter der Stimme',
       title: 'Ich bin Jason Shadow.',
       paragraphs: [
-        'Als Sänger, Sprecher und Moderator aus Rheine verbinde ich Musik und Worte mit einem persönlichen Stil und Sinn für dunkle Eleganz. Meine Gesangsstimme ist ein Bariton.',
+        'Als Sänger, Sprecher und Moderator verbinde ich Musik und Worte mit einem persönlichen Stil und Sinn für dunkle Eleganz. Meine Gesangsstimme ist ein Bariton.',
         'Mir ist wichtig, dass mein Beitrag zu Ihrem Anlass passt. Deshalb beginnt unsere Zusammenarbeit mit Ihrer Idee: Was möchten Sie Ihren Gästen mitgeben, und welche Stimmung soll entstehen?',
         'Der Live-Mitschnitt gibt Ihnen einen ersten Eindruck von mir. Alles Weitere besprechen wir direkt miteinander.',
       ],
@@ -100,7 +100,7 @@ module.exports = {
         { question: 'Für welche Veranstaltungen kann ich Sie buchen?', answer: 'Ich bin für B2B-Veranstaltungen wie Galas, Firmenjubiläen und Events in Restaurants sowie für private Feiern wie Hochzeiten buchbar. Auch andere Anlässe sind willkommen. Beschreiben Sie Ihre Idee – dann besprechen wir den passenden Beitrag, Termin und Ablauf.' },
         { question: 'Kann ich Gesang und Moderation kombinieren?', answer: 'Gern können Sie beides zusammen anfragen. Welche Kombination sinnvoll ist, besprechen wir anhand Ihres Programms und der Rahmenbedingungen.' },
         { question: 'Sind bestimmte Lieder oder eine bestimmte Sprache möglich?', answer: 'Teilen Sie mir Ihre Wünsche frühzeitig mit. Repertoire, Sprache und eine mögliche Vorbereitung besprechen wir individuell.' },
-        { question: 'Wo sind Auftritte möglich?', answer: 'Mein Standort ist Rheine in Nordrhein-Westfalen. Bitte nennen Sie den Veranstaltungsort in Ihrer Anfrage. Ob und unter welchen Bedingungen ein Auftritt dort möglich ist, klären wir direkt.' },
+        { question: 'Wo sind Auftritte möglich?', answer: 'Bitte nennen Sie den Veranstaltungsort in Ihrer Anfrage. Ob und unter welchen Bedingungen ein Auftritt dort möglich ist, klären wir direkt – einschließlich Anreise und der Gegebenheiten vor Ort.' },
         { question: 'Was kostet ein Auftritt und welche Technik wird benötigt?', answer: 'Das hängt unter anderem vom gewünschten Beitrag, Ort und Ablauf ab. Honorar, Dauer, Anreise sowie vorhandene oder benötigte Technik werden vor einer Vereinbarung besprochen.' },
         { question: 'Kann ich anfragen, wenn noch nicht alles feststeht?', answer: 'Ja. Eine kurze Beschreibung Ihrer Idee genügt für den ersten Kontakt. Schreiben Sie einfach dazu, welche Angaben noch offen sind. Eine Anfrage bestätigt weder Verfügbarkeit noch eine Buchung.' },
       ],
@@ -138,7 +138,7 @@ module.exports = {
       },
     },
     footer: {
-      description: `${occupation.de} · Rheine`,
+      description: occupation.de,
       affiliates: 'Affiliate-Links',
       legal: 'Impressum',
       privacy: 'Datenschutz',
@@ -149,8 +149,8 @@ module.exports = {
   },
   en: {
     occupation: occupation.en,
-    title: `Jason Shadow | ${occupation.en} in Rheine`,
-    description: `Jason Shadow: ${occupation.en} based in Rheine. Available for galas, company anniversaries, restaurant events and private celebrations such as weddings.`,
+    title: `Jason Shadow | ${occupation.en}`,
+    description: `Jason Shadow: ${occupation.en}. Available for galas, company anniversaries, restaurant events and private celebrations such as weddings.`,
     nav: [
       { href: '#eindruck', label: 'Live impression' },
       { href: '#leistungen', label: 'Services' },
@@ -165,14 +165,14 @@ module.exports = {
     cta: 'Enquire about your event',
     watch: 'Watch a live performance',
     hero: {
-      eyebrow: 'Jason Shadow · Based in Rheine',
+      eyebrow: 'Live. Personal. Distinctive.',
       title: 'A distinctive voice. A personal moment.',
       lead: occupation.en,
       detail: 'Available for B2B events such as galas, company anniversaries and restaurant events, as well as private celebrations including weddings – and your special occasion.',
     },
     performance: {
       eyebrow: 'A real first impression',
-      title: 'Live at KÖPI am Ring, Rheine.',
+      title: 'Live at KÖPI am Ring.',
       text: 'Get to know my voice through a real performance. This live recording offers a first impression of my singing.',
       caption: 'Jason Shadow · Singing at KÖPI am Ring in Rheine',
       fallback: 'The video cannot be played here right now. You can open the video file directly or contact me by email.',
@@ -205,7 +205,7 @@ module.exports = {
       eyebrow: 'The person behind the voice',
       title: 'I’m Jason Shadow.',
       paragraphs: [
-        'I’m a singer, speaker and moderator based in Rheine, Germany. My singing voice is a baritone. My approach brings music and words together with a personal style and a touch of dark elegance.',
+        'I’m a singer, speaker and moderator. My singing voice is a baritone. My approach brings music and words together with a personal style and a touch of dark elegance.',
         'What matters to me is how my contribution fits your occasion. Our conversation starts with your idea: what would you like your guests to take away, and what atmosphere do you want to create?',
         'The live recording is a first introduction. We can discuss the rest directly.',
       ],
@@ -226,7 +226,7 @@ module.exports = {
         { question: 'What kinds of event can I book you for?', answer: 'I am available for B2B events such as galas, company anniversaries and restaurant events, as well as private celebrations including weddings. Other occasions are welcome too. Describe your idea so we can discuss a suitable contribution, date and programme.' },
         { question: 'Can singing and hosting be combined?', answer: 'You are welcome to enquire about both. We can discuss a suitable combination based on your programme and practical arrangements.' },
         { question: 'Can I request particular songs or a performance language?', answer: 'Please share your preferences early. Repertoire, language and any preparation are discussed individually.' },
-        { question: 'Where can you perform?', answer: 'I am based in Rheine, North Rhine-Westphalia, Germany. Include the event location in your enquiry so we can discuss whether a performance there is possible and what arrangements it would involve.' },
+        { question: 'Where can you perform?', answer: 'Include the event location in your enquiry so we can discuss whether a performance there is possible, including travel and the practical arrangements at the venue.' },
         { question: 'What does a performance cost, and what equipment is needed?', answer: 'This depends on the contribution, location and programme. Fees, duration, travel and available or required equipment are discussed before an agreement.' },
         { question: 'Can I enquire before all the details are decided?', answer: 'Yes. A brief outline is enough to start the conversation. Let me know which details are still open. An enquiry does not confirm availability or a booking.' },
       ],
@@ -264,7 +264,7 @@ module.exports = {
       },
     },
     footer: {
-      description: `${occupation.en} · Rheine`,
+      description: occupation.en,
       affiliates: 'Affiliate links',
       legal: 'Legal notice (German)',
       privacy: 'Privacy notice (German)',

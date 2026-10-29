@@ -1,14 +1,25 @@
 // HTML delivers all content. JavaScript enhances navigation, media and enquiries.
+import './motion.js';
+
 document.documentElement.classList.add('js');
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('#mobile-menu');
 const mobile = matchMedia('(max-width: 850px)');
 if (toggle && menu) {
   toggle.hidden = false;
+  let opening;
+  const menuMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const setMenu = (open, restoreFocus = false) => {
+    opening?.cancel();
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
     menu.hidden = !open;
+    if (open && !menuMotion.matches && menu.animate) {
+      opening = menu.animate([
+        { opacity: 0, transform: 'translateY(-8px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ], { duration: 200, easing: 'ease-out' });
+    }
     if (open) menu.querySelector('a')?.focus();
     if (!open && restoreFocus) toggle.focus();
   };
@@ -31,6 +42,7 @@ if (toggle && menu) {
     if (!menu.hidden && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setMenu(false);
   });
   mobile.addEventListener('change', () => setMenu(false));
+  menuMotion.addEventListener('change', () => opening?.cancel());
 }
 document.querySelectorAll('.language-links a').forEach(link => {
   link.addEventListener('click', () => { if (location.hash) link.hash = location.hash; });
