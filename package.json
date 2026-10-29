@@ -1,17 +1,19 @@
 {
   "name": "musicwebsite",
   "version": "1.0.0",
-  "description": "Responsive component-based Jason Shadow website for Cloudflare Pages.",
-  "main": "script.js",
+  "description": "Static bilingual Jason Shadow singing, event hosting and voice website for Cloudflare Pages.",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/copy-static.js",
-    "preview": "vite preview --host 127.0.0.1",
+    "preview": "node scripts/serve-static.cjs",
     "test": "npm run test:browser",
     "test:browser": "playwright test",
     "test:browser:headed": "playwright test --headed",
     "screenshots": "playwright test tests/visual.spec.js",
-    "install:browsers": "playwright install chromium"
+    "install:browsers": "playwright install chromium",
+    "generate": "node scripts/render-pages.cjs && node scripts/secondary-pages.cjs",
+    "predev": "npm run generate",
+    "prebuild": "npm run generate"
   },
   "keywords": [],
   "author": "",

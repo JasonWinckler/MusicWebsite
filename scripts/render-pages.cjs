@@ -1,0 +1,58 @@
+const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
+const { resolve, dirname } = require('node:path');
+const content = require('../content/site.cjs');
+const { site } = content;
+const e = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const nav = t => t.nav.map(a => `<a href="${e(a.href)}">${e(a.label)}</a>`).join('');
+const button = (label, href = '#kontakt', secondary = false) => `<a class="button button-${secondary ? 'secondary' : 'primary'}" href="${href}">${e(label)}<span aria-hidden="true">${secondary ? '→' : '→'}</span></a>`;
+const heading = (number, t, id) => `<div class="section-heading"><p class="eyebrow"><span class="section-number" aria-hidden="true">${number}</span>${e(t.eyebrow)}</p><h2 id="${id}">${e(t.title)}</h2></div>`;
+
+function render(lang) {
+  const t = content[lang], f = t.contact.form;
+  const path = lang === 'de' ? '/' : '/en/';
+  const portrait = site.media.portrait, video = site.media.performance;
+  const languages = `<nav class="language-links" aria-label="${e(t.languageLabel)}"><a href="/" hreflang="de" lang="de"${lang === 'de' ? ' aria-current="page"' : ''}>DE</a><span aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="page"' : ''}>EN</a></nav>`;
+  const schema = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Person', '@id': `${site.url}/#artist`, name: site.name, url: site.url, image: site.url + portrait.src, description: t.footer.description, homeLocation: { '@type': 'City', name: site.location } },
+    { '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: `${site.url}/`, inLanguage: ['de', 'en'], about: { '@id': `${site.url}/#artist` } },
+    ...t.services.items.map(item => ({ '@type': 'Service', name: item.title, description: item.text, provider: { '@id': `${site.url}/#artist` }, url: `${site.url}${path}#leistungen` })),
+  ] };
+  const field = (name, label, control, hint = '') => `<div class="form-field"><label for="${name}">${e(label)}</label>${control}<p class="field-error" id="${name}-error" hidden></p>${hint}</div>`;
+  const messages = ['pending', 'success', 'error', 'invalid', 'required', 'invalidEmail'].map(key => `data-${key.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`)}="${e(f[key])}"`).join(' ');
+  return `<!doctype html>
+<!-- Generated from content/site.cjs and scripts/render-pages.cjs. Edit those sources. -->
+<html lang="${lang}"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#170d10">
+<title>${e(t.title)}</title><meta name="description" content="${e(t.description)}">
+<link rel="canonical" href="${site.url}${path}"><link rel="alternate" hreflang="de" href="${site.url}/"><link rel="alternate" hreflang="en" href="${site.url}/en/"><link rel="alternate" hreflang="x-default" href="${site.url}/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${e(t.title)}"><meta property="og:description" content="${e(t.description)}"><meta property="og:url" content="${site.url}${path}"><meta property="og:locale" content="${lang === 'de' ? 'de_DE' : 'en_GB'}"><meta property="og:locale:alternate" content="${lang === 'de' ? 'en_GB' : 'de_DE'}">
+<meta property="og:image" content="${site.url}${site.media.social}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${e(t.portraitAlt)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${e(t.title)}"><meta name="twitter:description" content="${e(t.description)}"><meta name="twitter:image" content="${site.url}${site.media.social}"><meta name="twitter:image:alt" content="${e(t.portraitAlt)}">
+<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script><link rel="stylesheet" href="/assets/css/site.css">
+</head><body>
+<a class="skip-link" href="#main">${e(t.skip)}</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="${path}" aria-label="Jason Shadow"><span class="brand-mark" aria-hidden="true">JS<span>✦</span></span><span>Jason Shadow</span></a><nav class="desktop-nav" aria-label="${e(t.navLabel)}">${nav(t)}</nav><div class="header-actions">${languages}<a class="header-cta" href="#kontakt">${e(t.cta)} <span aria-hidden="true">→</span></a><button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="${e(t.menuOpen)}" data-open-label="${e(t.menuOpen)}" data-close-label="${e(t.menuClose)}" hidden><span></span><span></span></button></div></div><nav class="mobile-menu" id="mobile-menu" aria-label="${e(t.navLabel)}" hidden><div class="mobile-nav">${nav(t)}<a href="#kontakt">${e(t.cta)}</a></div></nav></header>
+<main id="main" tabindex="-1">
+<section class="hero section-shell" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">${e(t.hero.eyebrow)}</p><h1 id="hero-title">${e(t.hero.title)}</h1><p class="hero-lead">${e(t.hero.lead)}</p><p class="hero-detail">${e(t.hero.detail)}</p><div class="hero-actions">${button(t.cta)}${button(t.watch, '#eindruck', true)}</div><p class="hero-index"><span aria-hidden="true">✦</span> ${e(t.footer.description)}</p></div><figure class="hero-portrait"><picture><img src="${portrait.src}" srcset="${portrait.sources}" sizes="(max-width: 700px) 88vw, (max-width: 1000px) 42vw, 480px" width="${portrait.width}" height="${portrait.height}" alt="${e(t.portraitAlt)}" fetchpriority="high"></picture><figcaption class="portrait-caption"><span>JASON SHADOW</span><span>RHEINE · NRW</span></figcaption></figure></section>
+<section class="performance section-shell" id="eindruck" aria-labelledby="performance-title">${heading('01', t.performance, 'performance-title')}<div class="performance-grid"><figure class="video-frame"><video controls playsinline preload="none" width="${video.width}" height="${video.height}" poster="${video.poster}" aria-label="${e(t.performance.caption)}" aria-describedby="performance-caption"><source src="${video.src}" type="video/mp4"><a href="${video.src}">${e(t.performance.download)}</a></video><figcaption id="performance-caption">${e(t.performance.caption)}</figcaption><p data-video-fallback hidden>${e(t.performance.fallback)}</p></figure><div class="performance-copy"><p class="section-kicker">${e(t.hero.eyebrow)}</p><p>${e(t.performance.text)}</p><a class="text-link" href="${video.src}">${e(t.performance.download)} <span aria-hidden="true">→</span></a><div class="section-action">${button(t.cta)}</div></div></div></section>
+<section class="services section-shell" id="leistungen" aria-labelledby="services-title">${heading('02', t.services, 'services-title')}<p class="section-intro">${e(t.services.intro)}</p><div class="services-grid">${t.services.items.map((item, i) => `<article class="service-card"><span class="service-number" aria-hidden="true">0${i + 1}</span><h3>${e(item.title)}</h3><p>${e(item.text)}</p><p class="service-detail">${e(item.detail)}</p><a class="text-link" href="#kontakt">${e(t.cta)} <span aria-hidden="true">→</span></a></article>`).join('')}</div><div class="section-action"><a class="text-link" href="#kontakt">${e(t.services.cta)} <span aria-hidden="true">→</span></a></div></section>
+<section class="about section-shell" id="ueber-mich" aria-labelledby="about-title"><div class="about-grid"><div class="about-label">${heading('03', t.about, 'about-title')}<span class="about-signature" aria-hidden="true">Jason Shadow</span></div><div class="about-copy">${t.about.paragraphs.map(p => `<p>${e(p)}</p>`).join('')}</div></div></section>
+<section class="process section-shell" id="ablauf" aria-labelledby="process-title">${heading('04', t.process, 'process-title')}<ol class="process-grid">${t.process.steps.map((item, i) => `<li class="process-step"><span class="service-number" aria-hidden="true">0${i + 1}</span><h3>${e(item.title)}</h3><p>${e(item.text)}</p></li>`).join('')}</ol></section>
+<section class="faq section-shell" id="fragen" aria-labelledby="faq-title"><div class="faq-layout">${heading('05', t.faq, 'faq-title')}<div class="faq-list">${t.faq.items.map(item => `<details><summary>${e(item.question)}<span aria-hidden="true">+</span></summary><p>${e(item.answer)}</p></details>`).join('')}</div></div></section>
+<section class="contact section-shell" id="kontakt" aria-labelledby="contact-title"><div class="contact-grid"><div class="contact-copy">${heading('06', t.contact, 'contact-title')}<p>${e(t.contact.text)}</p><p class="email-label">${e(t.contact.emailLabel)}</p><a class="contact-email" href="mailto:${site.email}">${site.email}<span aria-hidden="true">→</span></a><p class="form-note">${e(t.footer.description)}</p></div><form class="enquiry-form" action="${site.formAction}" method="POST" ${messages}>
+<div class="form-row">${field('name', f.name, '<input id="name" name="name" autocomplete="name" maxlength="150" required aria-describedby="name-error">')}${field('email', f.email, '<input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">')}</div>
+${field('service', f.service, `<select id="service" name="service" required aria-describedby="service-error">${f.services.map(item => `<option value="${e(item.value)}">${e(item.label)}</option>`).join('')}</select>`)}
+${field('message', f.message, '<textarea id="message" name="message" rows="5" maxlength="5000" required aria-describedby="message-hint message-error"></textarea>', `<p class="form-help" id="message-hint">${e(f.messageHint)}</p>`)}
+<input type="hidden" name="_subject" value="${e(lang === 'de' ? 'Website-Anfrage: Jason Shadow' : 'Website enquiry: Jason Shadow')}"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" tabindex="-1" autocomplete="off" hidden>
+<p class="form-privacy">${e(f.privacyLead)}<a href="/datenschutz/" hreflang="de">${e(f.privacyLabel)}</a>${e(f.privacyEnd)}</p><button class="button button-primary" type="submit"><span data-submit-label>${e(f.submit)}</span><span aria-hidden="true">→</span></button><p class="form-status" role="status" aria-live="polite" tabindex="-1"></p><noscript><p class="form-note">${lang === 'de' ? 'Beim Senden öffnen Sie den Formularservice FormSubmit. Alternativ können Sie direkt eine E-Mail schreiben.' : 'Submitting opens the FormSubmit form service. You can also email me directly.'}</p></noscript></form></div></section>
+</main><footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><a class="brand" href="${path}">Jason Shadow</a><p>${e(t.footer.description)}</p></div><nav class="footer-links" aria-label="${lang === 'de' ? 'Weitere Informationen' : 'Further information'}"><a href="${path}affiliates/">${e(t.footer.affiliates)}</a><a href="/impressum/" hreflang="de">${e(t.footer.legal)}</a><a href="/datenschutz/" hreflang="de">${e(t.footer.privacy)}</a><a href="#main">${e(t.footer.backTop)} ↑</a></nav></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} Jason Shadow</span><span>${e(t.footer.legalNote)}</span></div></footer><script type="module" src="/src/main.js"></script>
+</body></html>`;
+}
+
+for (const lang of ['de', 'en']) {
+  const file = resolve(__dirname, '..', lang === 'de' ? 'index.html' : 'en/index.html');
+  mkdirSync(dirname(file), { recursive: true });
+  const html = render(lang);
+  let old; try { old = readFileSync(file, 'utf8'); } catch {}
+  if (old !== html) writeFileSync(file, html);
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "route": "/",
+    "violations": [],
+    "manualReview": [
+      "color-contrast",
+      "video-caption"
+    ]
+  },
+  {
+    "route": "/en/",
+    "violations": [],
+    "manualReview": [
+      "color-contrast",
+      "video-caption"
+    ]
+  },
+  {
+    "route": "/affiliates/",
+    "violations": [],
+    "manualReview": [
+      "aria-prohibited-attr",
+      "color-contrast"
+    ]
+  },
+  {
+    "route": "/en/affiliates/",
+    "violations": [],
+    "manualReview": [
+      "aria-prohibited-attr",
+      "color-contrast"
+    ]
+  },
+  {
+    "route": "/impressum/",
+    "violations": [],
+    "manualReview": []
+  },
+  {
+    "route": "/datenschutz/",
+    "violations": [],
+    "manualReview": []
+  }
+]
