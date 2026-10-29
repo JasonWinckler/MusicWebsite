@@ -1,32 +1,179 @@
-[
-  {
-    "route": "/",
-    "violations": [],
-    "manualReview": [
-      "color-contrast",
-      "video-caption"
-    ]
-  },
-  {
-    "route": "/en/",
-    "violations": [],
-    "manualReview": [
-      "color-contrast",
-      "video-caption"
-    ]
-  },
-  {
-    "route": "/affiliates/",
-    "violations": [],
-    "manualReview": [
-      "color-contrast"
-    ]
-  },
-  {
-    "route": "/en/affiliates/",
-    "violations": [],
-    "manualReview": [
-      "color-contrast"
-    ]
+{
+  "tool": "axe-core 4.11.0",
+  "scope": "WCAG 2 A/AA and 2.1 AA automated checks; manual review remains necessary for layered backgrounds and video captions",
+  "cases": [
+    {
+      "path": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "path": "/en/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "path": "/affiliates/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 1,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/en/affiliates/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 1,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/impressum/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/datenschutz/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/does-not-exist/",
+      "width": 390,
+      "status": 404,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "path": "/en/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "path": "/affiliates/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 1,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/en/affiliates/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 1,
+      "violations": [],
+      "manualReview": [
+        "color-contrast"
+      ]
+    },
+    {
+      "path": "/impressum/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": []
+    },
+    {
+      "path": "/datenschutz/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": []
+    },
+    {
+      "path": "/does-not-exist/",
+      "width": 1440,
+      "status": 404,
+      "overflow": false,
+      "browserErrors": [],
+      "logoCount": 2,
+      "violations": [],
+      "manualReview": []
+    }
+  ],
+  "manualFindings": {
+    "affiliateOriginalRatio": "2:1 at 320, 390, 768 and 1440 px",
+    "firstPartnerVisibleAt320And390WithHeight844": true,
+    "corrected404ButtonContrast": 12.2949,
+    "originalLogoBytesPreserved": true,
+    "originalLogoSha256": "75c04da923d22a73f6199538834b61cef7c9f311e2ff5d9c2708bcae984b823c"
   }
-]
+}

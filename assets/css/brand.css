@@ -1,0 +1,49 @@
+/* Actual uploaded artwork, shared by every page. No replacement lettering. */
+.site-header .brand { gap: 10px; padding-block: 6px; }
+.brand-symbol {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 42px;
+  aspect-ratio: 470 / 510;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #40000b;
+}
+/* The source is 1774 × 887; this window shows x=105–575, y=175–685. */
+.brand-symbol img {
+  position: absolute;
+  left: -22.340426%;
+  top: -34.313725%;
+  width: 377.446809%;
+  max-width: none;
+  height: auto;
+}
+.brand-logo-full,
+.footer-brand > .brand-logo-full {
+  display: block;
+  width: min(340px, 100%);
+  padding: 0;
+  margin: 0 0 14px;
+  overflow: hidden;
+  border: 1px solid #efd18a30;
+  border-radius: 18px;
+  background: #40000b;
+}
+.brand-logo-full img { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: contain; }
+.home-page .footer-inner { align-items: center; }
+.linkhub-page .linkhub-cover.linkhub-cover--logo { background: #40000b; }
+.linkhub-page .linkhub-cover.linkhub-cover--logo img { aspect-ratio: 2 / 1; height: auto; object-fit: contain; }
+/* Keep the portrait below the artwork so it never covers the logo lettering. */
+.linkhub-page .linkhub-cover--logo + .linkhub-profile-copy .linkhub-avatar { margin-top: 16px; }
+@media (max-width: 600px) {
+  .site-header .brand { gap: 7px; }
+  .brand-symbol { width: 31px; border-radius: 8px; }
+  .brand-logo-full,
+  .footer-brand > .brand-logo-full { width: min(330px, 100%); }
+  .linkhub-page .linkhub-cover--logo + .linkhub-profile-copy .linkhub-avatar { width: 72px; height: 72px; margin-top: 12px; margin-bottom: 13px; }
+}
+@media (max-width: 350px) {
+  .home-page .site-header .brand { gap: 5px; font-size: 1rem; }
+  .brand-symbol { width: 27px; }
+}

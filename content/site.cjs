@@ -16,6 +16,7 @@ module.exports = {
     location: 'Rheine',
     formAction: 'https://formsubmit.co/business@jason-shadow.com',
     media: {
+      logo: { src: '/uploads/logo.png', width: 1774, height: 887 },
       portrait: { src: '/media/portrait-800.webp', sources: '/media/portrait-400.webp 400w, /media/portrait-800.webp 800w, /media/portrait-1023.webp 1023w', width: 800, height: 1202 },
       performance: { src: '/media/koepi-live.mp4', poster: '/media/performance-poster.webp', width: 478, height: 570 },
       social: '/media/social.jpg',

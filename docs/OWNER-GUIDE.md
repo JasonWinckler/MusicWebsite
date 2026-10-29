@@ -28,6 +28,13 @@ Die E-Mail-Adresse steht zentral unter `site.email`; das FormSubmit-Ziel unter `
 
 ### Ein Bild ersetzen
 
+Das neue Logo liegt als Original in [`uploads/logo.png`](../uploads/logo.png).
+Es wird als vollständige Wortmarke auf der Affiliate-Seite und in der Fußzeile
+verwendet; die Navigation zeigt einen Ausschnitt mit dem echten JS-Monogramm.
+Beim Austauschen eines Logos mit anderen Abmessungen müssen auch dieser
+Ausschnitt, `site.media.logo` und die Darstellung auf dem Handy geprüft werden.
+Die ursprüngliche Datei wird nicht überzeichnet oder umgefärbt.
+
 Das Originalporträt bleibt unter [`uploads/profile.png`](../uploads/profile.png) erhalten. Die Website verwendet kleinere, optimierte Varianten unter `/media/`, damit Mobilgeräte nicht das große Original laden müssen.
 
 Laden Sie das neue echte Porträt in einem Änderungsbranch hoch und bitten Sie den Assistenten:

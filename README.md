@@ -64,6 +64,14 @@ consistent with `hero.title`. Review both languages at phone and desktop widths
 when changing these short lines. The hero has one live-performance button beside
 the enquiry action; the portrait has no duplicate action overlay.
 
+The original brand artwork is [`uploads/logo.png`](uploads/logo.png), supplied
+by the owner. `scripts/brand.cjs` renders it and `assets/css/brand.css` handles
+its display: a CSS window onto the real JS monogram in compact navigation, and
+the complete 2:1 artwork in footers and the affiliate cover. The image itself is
+unchanged. Keep the wordmark uncropped and the profile portrait below it.
+Shared colors in `site.css` use deep burgundy (`#240007`), warm gold (`#efd18a`)
+and ivory (`#fff5df`); the browser theme color matches the burgundy base.
+
 `npm run generate` writes the main and secondary HTML. Both `npm run dev` and
 `npm run build` run it automatically. After editing content or templates while a
 development server is already running, run `npm run generate` again or restart
@@ -87,7 +95,7 @@ image use existing material. Preserve originals. New media must have an
 accurate title/context and appropriate publication rights. Never invent reviews,
 credentials, repertoire, event experience, travel coverage or language fluency.
 Affiliate relationships are disclosed separately from customer references. The
-affiliate pages use the existing uploaded banner and partner previews, with
+affiliate pages use the shared logo and existing uploaded partner previews, with
 image frames fitted to their original proportions, plus large native Instagram,
 website and PayPal links. Keep these touch-friendly links usable without JavaScript.
 Decorative location labels have been removed; the actual performance caption

@@ -326,7 +326,11 @@ test('labelled desktop and phone review screenshots', async ({ page }, testInfo)
     await page.goto(path);
     await page.evaluate(async () => {
       await document.fonts.ready;
-      await Promise.all([...document.images].filter(image => image.loading !== 'lazy').map(image => image.decode().catch(() => {})));
+      // Full-page captures also include the lazy footer logo outside the viewport.
+      await Promise.all([...document.images].map(image => {
+        image.loading = 'eager';
+        return image.decode().catch(() => {});
+      }));
     });
     await page.screenshot({ path: join(directory, `${language}-${device}-full.png`), fullPage: true, scale: 'css' });
     if (language === 'de') {

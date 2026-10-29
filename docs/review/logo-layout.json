@@ -1,0 +1,232 @@
+[
+  {
+    "path": "/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 286,
+        "height": 143,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 1,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/en/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 286,
+        "height": 143,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 1,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/affiliates/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 286,
+        "height": 143,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": []
+  },
+  {
+    "path": "/en/affiliates/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 286,
+        "height": 143,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": []
+  },
+  {
+    "path": "/impressum/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 254,
+        "height": 127,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/datenschutz/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 254,
+        "height": 127,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/does-not-exist/",
+    "width": 320,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 254,
+        "height": 127,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 338,
+        "height": 169,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 1,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/en/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 338,
+        "height": 169,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 1,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/affiliates/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 598,
+        "height": 299,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": []
+  },
+  {
+    "path": "/en/affiliates/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 598,
+        "height": 299,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": []
+  },
+  {
+    "path": "/impressum/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 338,
+        "height": 169,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/datenschutz/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 338,
+        "height": 169,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  },
+  {
+    "path": "/does-not-exist/",
+    "width": 768,
+    "overflow": false,
+    "fullLogos": [
+      {
+        "width": 338,
+        "height": 169,
+        "objectFit": "contain",
+        "loaded": true
+      }
+    ],
+    "liveHeroActions": 0,
+    "logoNavNames": [
+      "Jason Shadow"
+    ]
+  }
+]
