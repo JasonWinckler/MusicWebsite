@@ -39,7 +39,7 @@ for (const lang of ['de', 'en']) {
   const socialLinks = [
     { icon: 'instagram', label: 'Instagram', detail: '@jason.shadow_official', href: 'https://www.instagram.com/jason.shadow_official/', external: true },
     { icon: 'website', label: en ? 'My website' : 'Meine Website', detail: en ? 'Live singing, voice & event enquiries' : 'Live-Gesang, Stimme & Auftrittsanfragen', href: home, external: false },
-    { icon: 'paypal', label: en ? 'Support via PayPal' : 'Über PayPal unterstützen', detail: en ? 'Support my work' : 'Meine Arbeit unterstützen', href: 'https://www.paypal.com/donate/?hosted_button_id=6XPT97RRUBEA6', external: true },
+    { icon: 'paypal', label: en ? 'Support via PayPal' : 'Über PayPal unterstützen', detail: en ? 'Support my work' : 'Meine Arbeit unterstützen', href: 'https://www.paypal.com/donate/?hosted_button_id=TBJRBRR6DPW22', external: true },
   ];
   const body = `${head({ lang, title, description, route, alternates: true, styles: ['/assets/css/linkhub.css'] })}
 <body class="linkhub-page">
