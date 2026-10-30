@@ -326,7 +326,7 @@ test('labelled desktop and phone review screenshots', async ({ page }, testInfo)
     await page.goto(path);
     await page.evaluate(async () => {
       await document.fonts.ready;
-      // Full-page captures also include the lazy footer logo outside the viewport.
+      // Decode all artwork before capturing the complete page.
       await Promise.all([...document.images].map(image => {
         image.loading = 'eager';
         return image.decode().catch(() => {});

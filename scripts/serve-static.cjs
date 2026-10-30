@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '../dist');
 const args = process.argv.slice(2);
 const port = Number(args.includes('--port') ? args[args.indexOf('--port') + 1] : 4173);
 const host = args.includes('--host') ? args[args.indexOf('--host') + 1] : '127.0.0.1';
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.avif': 'image/avif', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.jfif': 'image/jpeg', '.mp4': 'video/mp4', '.woff2': 'font/woff2' };
+const mime = { '.ico': 'image/vnd.microsoft.icon', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.avif': 'image/avif', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.jfif': 'image/jpeg', '.mp4': 'video/mp4', '.woff2': 'font/woff2' };
 const security = {};
 try {
   const block = fs.readFileSync(path.join(root, '_headers'), 'utf8').split('\n\n')[0];
