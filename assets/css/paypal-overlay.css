@@ -1,0 +1,60 @@
+/* Loaded only into the SDK's same-origin overlay document. */
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+
+.paypal-checkout-overlay .paypal-checkout-close {
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 44px !important;
+  height: 44px !important;
+  z-index: 1000 !important;
+  box-sizing: border-box;
+  border: 1px solid #ead19a;
+  border-radius: 50%;
+  background: #240007;
+  opacity: 1 !important;
+  cursor: pointer;
+}
+.paypal-checkout-overlay .paypal-checkout-close::before,
+.paypal-checkout-overlay .paypal-checkout-close::after {
+  top: 13px !important;
+  left: 20px !important;
+  width: 2px !important;
+  height: 16px !important;
+  background: #fff !important;
+}
+.paypal-checkout-overlay .paypal-checkout-close:focus-visible {
+  outline: 3px solid #ead19a;
+  outline-offset: 3px;
+}
+
+.paypal-checkout-overlay .paypal-checkout-iframe-container {
+  top: calc(50% + 26px) !important;
+  left: 50% !important;
+  width: min(612px, calc(100% - 24px)) !important;
+  height: min(760px, calc(100% - 76px)) !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  transform: translate(-50%, -50%) !important;
+}
+.paypal-checkout-overlay .paypal-checkout-iframe-container > .outlet,
+.paypal-checkout-overlay .paypal-checkout-iframe-container > .outlet > iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paypal-checkout-overlay *,
+  .paypal-checkout-overlay *::before,
+  .paypal-checkout-overlay *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

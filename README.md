@@ -106,6 +106,12 @@ Affiliate relationships are disclosed separately from customer references. The
 affiliate pages use the shared logo and existing uploaded partner previews, with
 image frames fitted to their original proportions, plus large native Instagram,
 website and PayPal links. Keep these touch-friendly links usable without JavaScript.
+The PayPal link loads the official Donation SDK only after activation, then opens
+the production hosted button `TBJRBRR6DPW22` in its iframe overlay via
+`Checkout(...).render('body', 'iframe')`. Do not use the default popup context or
+`renderTo()`'s automatic redirect fallback. If loading fails, show an explicit
+direct link and allow retry; never automatically navigate away. PayPal's required
+CSP permissions are limited to the affiliate routes in `scripts/copy-static.js`.
 Decorative location labels have been removed; the actual performance caption
 and required legal details retain their factual context.
 

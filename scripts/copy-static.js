@@ -19,13 +19,21 @@ async function copyStatic() {
     for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);
   }
   const previewBuild = process.env.CF_PAGES === '1' && process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== 'main';
+  const defaultPolicy = `default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self' ${[...hashes].join(' ')}; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self' https://formsubmit.co`;
+  // The donation SDK writes its overlay styles dynamically. Limit that exception
+  // and the PayPal origins to the two affiliate pages, including their aliases.
+  const donationPolicy = `default-src 'self'; img-src 'self' data: https://www.paypalobjects.com; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.paypalobjects.com/donate/sdk/donate-sdk.js; connect-src 'self' https://formsubmit.co https://www.paypal.com; frame-src 'self' https://www.paypal.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self' https://formsubmit.co`;
+  const donationHeaders = ['/affiliates', '/affiliates/', '/affiliates/index.html', '/en/affiliates', '/en/affiliates/', '/en/affiliates/index.html'].map(route => `${route}\n  ! Content-Security-Policy\n  Content-Security-Policy: ${donationPolicy}\n`).join('\n');
   await writeFile('dist/_headers', `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self' ${[...hashes].join(' ')}; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self' https://formsubmit.co
+  Content-Security-Policy: ${defaultPolicy}
 ${previewBuild ? '  X-Robots-Tag: noindex, nofollow\n' : ''}
+# Detach the inherited policy before setting the page-specific policy: matching
+# Cloudflare header values would otherwise be combined and both enforced.
+${donationHeaders}
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
