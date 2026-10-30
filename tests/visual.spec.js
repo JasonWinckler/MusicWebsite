@@ -268,7 +268,7 @@ for (const [path, language] of [['/affiliates/', 'de'], ['/en/affiliates/', 'en'
         }
         const destinations = [
           'https://www.instagram.com/jason.shadow_official/',
-          'https://www.paypal.com/donate/?hosted_button_id=6XPT97RRUBEA6',
+          'https://www.paypal.com/donate/?hosted_button_id=TBJRBRR6DPW22',
           language === 'de' ? '/' : '/en/',
         ];
         for (const href of destinations) {
