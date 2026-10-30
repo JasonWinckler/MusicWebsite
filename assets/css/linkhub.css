@@ -1,4 +1,8 @@
 /* Instagram link-in-bio page: compact, touch-friendly and independent of the homepage layout. */
+body.paypal-checkout-open { overflow: hidden; }
+.linkhub-donation-feedback { margin: 12px 5px; font-size: .85rem; line-height: 1.6; }
+.linkhub-donation-feedback p { margin: 0 0 8px; }
+.linkhub-donation-feedback a:not([hidden]) { display: inline-block; min-height: 44px; padding-block: 10px; }
 body.linkhub-page {
   --hub-edge: rgba(239, 209, 138, .24);
   --hub-quiet: var(--muted);

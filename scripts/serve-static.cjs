@@ -9,27 +9,49 @@ const args = process.argv.slice(2);
 const port = Number(args.includes('--port') ? args[args.indexOf('--port') + 1] : 4173);
 const host = args.includes('--host') ? args[args.indexOf('--host') + 1] : '127.0.0.1';
 const mime = { '.ico': 'image/vnd.microsoft.icon', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.avif': 'image/avif', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.jfif': 'image/jpeg', '.mp4': 'video/mp4', '.woff2': 'font/woff2' };
-const security = {};
+const headerRules = [];
 try {
-  const block = fs.readFileSync(path.join(root, '_headers'), 'utf8').split('\n\n')[0];
-  for (const line of block.split('\n').slice(1)) {
-    const match = /^\s+([^:]+):\s*(.*)$/.exec(line);
-    if (match) security[match[1]] = match[2];
+  let rule;
+  for (const line of fs.readFileSync(path.join(root, '_headers'), 'utf8').split('\n')) {
+    if (!line.trim() || line.trimStart().startsWith('#')) continue;
+    if (!/^\s/.test(line)) {
+      // Host-specific Pages preview rules do not match the local preview host.
+      rule = line.startsWith('/') ? { pattern: line.trim(), set: [], unset: [] } : null;
+      if (rule) headerRules.push(rule);
+      continue;
+    }
+    if (!rule) continue;
+    const unset = /^\s*!\s+(.+)$/.exec(line);
+    const set = /^\s+([^:]+):\s*(.*)$/.exec(line);
+    if (unset) rule.unset.push(unset[1].trim().toLowerCase());
+    else if (set) rule.set.push([set[1].trim().toLowerCase(), set[2]]);
   }
 } catch { console.error('Build output is missing. Run npm run build first.'); process.exit(1); }
+function headersForPath(pathname) {
+  const headers = {};
+  for (const { pattern, set, unset } of headerRules) {
+    const [prefix, suffix] = pattern.split('*');
+    const matches = suffix === undefined ? pathname === pattern : pathname.startsWith(prefix) && pathname.endsWith(suffix);
+    if (!matches) continue;
+    // Cloudflare applies removals before additions within each matching rule.
+    for (const name of unset) delete headers[name];
+    for (const [name, value] of set) headers[name] = headers[name] ? `${headers[name]}, ${value}` : value;
+  }
+  return headers;
+}
 async function fileResponse(request, response, file, status) {
   const stat = await fsp.stat(file);
-  const headers = { ...security, 'Content-Type': mime[path.extname(file)] || 'application/octet-stream', 'Content-Length': stat.size, 'Accept-Ranges': 'bytes' };
-  if (status === 404) headers['X-Robots-Tag'] = 'noindex, follow';
-  if (file.includes(`${path.sep}assets${path.sep}`)) headers['Cache-Control'] = 'public, max-age=31536000, immutable';
+  const headers = { ...headersForPath(new URL(request.url, 'http://localhost').pathname), 'content-type': mime[path.extname(file)] || 'application/octet-stream', 'content-length': stat.size, 'accept-ranges': 'bytes' };
+  if (status === 404) headers['x-robots-tag'] = 'noindex, follow';
+  if (file.includes(`${path.sep}assets${path.sep}`)) headers['cache-control'] = 'public, max-age=31536000, immutable';
   let start = 0; let end = stat.size - 1;
   if (request.headers.range && status === 200) {
     const match = /^bytes=(\d*)-(\d*)$/.exec(request.headers.range);
-    if (!match || (!match[1] && !match[2])) { response.writeHead(416, { ...headers, 'Content-Range': `bytes */${stat.size}`, 'Content-Length': 0 }); return response.end(); }
+    if (!match || (!match[1] && !match[2])) { response.writeHead(416, { ...headers, 'content-range': `bytes */${stat.size}`, 'content-length': 0 }); return response.end(); }
     if (!match[1]) { start = Math.max(0, stat.size - Number(match[2])); }
     else { start = Number(match[1]); if (match[2]) end = Math.min(Number(match[2]), end); }
-    if (start > end || start >= stat.size) { response.writeHead(416, { ...headers, 'Content-Range': `bytes */${stat.size}`, 'Content-Length': 0 }); return response.end(); }
-    status = 206; headers['Content-Range'] = `bytes ${start}-${end}/${stat.size}`; headers['Content-Length'] = end - start + 1;
+    if (start > end || start >= stat.size) { response.writeHead(416, { ...headers, 'content-range': `bytes */${stat.size}`, 'content-length': 0 }); return response.end(); }
+    status = 206; headers['content-range'] = `bytes ${start}-${end}/${stat.size}`; headers['content-length'] = end - start + 1;
   }
   response.writeHead(status, headers);
   if (request.method === 'HEAD' || stat.size === 0) return response.end();
